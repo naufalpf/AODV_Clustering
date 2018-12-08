@@ -149,7 +149,6 @@ class aodv_rtable {
 	aodv_rtable() { LIST_INIT(&rthead); }
 
         aodv_rt_entry*       head() { return rthead.lh_first; }
-
         aodv_rt_entry*       rt_add(nsaddr_t id);
         void                 rt_delete(nsaddr_t id);
         aodv_rt_entry*       rt_lookup(nsaddr_t id);

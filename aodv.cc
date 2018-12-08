@@ -1,35 +1,3 @@
-/*
-Copyright (c) 1997, 1998 Carnegie Mellon University.  All Rights
-Reserved. 
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice,
-this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright notice,
-this list of conditions and the following disclaimer in the documentation
-and/or other materials provided with the distribution.
-3. The name of the author may not be used to endorse or promote products
-derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-The AODV code developed by the CMU/MONARCH group was optimized and tuned by Samir Das and Mahesh Marina, University of Cincinnati. The work was partially done in Sun Microsystems. Modified for gratuitous replies by Anant Utgikar, 09/16/02.
-
-*/
-
-//#include <ip.h>
-
 #include <aodv/aodv.h>
 #include <aodv/aodv_packet.h>
 #include <random.h>
@@ -178,6 +146,7 @@ AODV::AODV(nsaddr_t id) : Agent(PT_AODV),
 
   logtarget = 0;
   ifqueue = 0;
+  CH_ID = -1;
 }
 
 /*
@@ -906,6 +875,27 @@ void AODV::recvAODV(Packet *p)
   }
 }
 
+void AODV::calculateCHID()
+{
+  int max_degree = -1;
+
+  for (int i = 0; i < sizeof(count_neighbour) / sizeof(*count_neighbour); i++) {
+    if (count_neighbour[i] > max_degree)
+      max_degree = count_neighbour[i];
+  }
+
+  if (count_neighbour[index] == max_degree) {
+    CH_ID = index;
+  }
+  else {
+    CH_ID = -1;
+  }
+
+  FILE *fp = fopen("test.txt", "a");
+  fprintf(fp, "\n %f fungsi AODV::calculateCHID di node %d degreenya: %d, max_degree: %d, CH_ID: %d", CURRENT_TIME, index, count_neighbour[index], max_degree, CH_ID);
+  fclose(fp);
+}
+
 void AODV::recvRequest(Packet *p)
 {
   //print fungsi
@@ -918,6 +908,28 @@ void AODV::recvRequest(Packet *p)
   struct hdr_ip *ih = HDR_IP(p);
   struct hdr_aodv_request *rq = HDR_AODV_REQUEST(p);
   aodv_rt_entry *rt;
+
+  fp = fopen("test.txt", "a");
+
+  calculateCHID();
+
+  if (CH_ID != -1) {
+    // cluster head
+    fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, ini cluster head", now, index);
+  }
+  else if (CH_ID == -1) {
+    if (rq->rq_cluster_head_index != -1) {
+      // gateway
+      CH_ID = rq->rq_cluster_head_index;
+      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, ini gateway", now, index);
+    }
+    else {
+      // common member
+      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, ini member", now, index);
+    }
+  }
+
+  fclose(fp);
 
   //modified AODV calculate neighbor
   Node* m_node = Node::get_node_by_address(this->addr());
@@ -1047,7 +1059,7 @@ void AODV::recvRequest(Packet *p)
     * We have taken care of the reverse route stuff.
     * Now see whether we can send a route reply. 
     */
-  
+
     rt = rtable.rt_lookup(rq->rq_dst);
   
     // First check if I am the destination ..
@@ -1543,6 +1555,24 @@ void AODV::sendRequest(nsaddr_t dst)
   rq->rq_src_seqno = seqno;
   rq->rq_timestamp = CURRENT_TIME;
 
+  int cluster_head = CH_ID;
+
+  if (CH_ID == -1)
+    // if CH_ID has not been initialized, calculate it.
+    calculateCHID();
+
+  rq->rq_cluster_head_index = CH_ID;
+  CH_ID = cluster_head;
+
+  if (CH_ID != index)
+    // if this node is not cluster head and cluster head is known,
+    // set rq_bcast_id to it.
+    rq->rq_bcast_id = CH_ID;
+
+  fp = fopen("test.txt", "a");
+  fprintf(fp, "\n %f fungsi AODV::sendRequest sedang berada di node: %d, rq_cluster_head_index: %d, CH_ID: %d", now, index, rq->rq_cluster_head_index, CH_ID);
+  fclose(fp);
+
   Scheduler::instance().schedule(target_, p, 0.);
 }
 
@@ -1739,6 +1769,7 @@ void AODV::recvHello(Packet *p)
     nb->nb_expire = CURRENT_TIME +
                     (1.5 * ALLOWED_HELLO_LOSS * HELLO_INTERVAL);
   }
+  
 
   Packet::free(p);
 }
@@ -1845,13 +1876,13 @@ void AODV::nb_purge()
   }
 }
 
-//MODIFIED AODV
+// MODIFIE7D AODV
+//int AODV::nb_node(){
+//}
 // calculated number neighbour node
-// int AODV::nb_node(){
-//   int jumlahNode = 0;
-//   AODV_Neighbor *cc = nbhead.lh_first;
+//  }
+//  int jumlahNode = 0;
+//  AODV_Neighbor *cc = nbhead.lh_first;
 //   for(; cc; cc=cc->nb_link.le_next){
-//       jumlahNode++;
-//   }
+//      jumlahNode++;
 //   return jumlahNode;
-// }
