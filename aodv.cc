@@ -11,8 +11,8 @@
 //#define DEBUG
 //#define ERROR
 
-int count_neighbour[1000];    //var global buat ngitung
-int count_mode[1000];        //var global buat ngitung modus
+int count_neighbour[1000];    // menghitung jumlah tetangga tiap node
+int count_mode[1000];        // menghitung modus
 int masuk[1000];
 //count_neighbour = new int[0];
 int nodes_count=0;
@@ -53,7 +53,7 @@ public:
 int AODV::command(int argc, const char *const *argv)
 {
   //print fungsi
-  double now = Scheduler::instance().clock(); // get the time
+  double now = Scheduler::instance().clock(); // menampilkan waktu
   FILE *fp;
   fp = fopen("test.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::command", now);
@@ -184,9 +184,9 @@ void HelloTimer::handle(Event *)
  Scheduler::instance().schedule(this, &intr, interval);
 }
 
-void ModAldo::handle(Event *)
+void Modif::handle(Event *)
 {
-  double now = Scheduler::instance().clock(); // get the time
+  double now = Scheduler::instance().clock(); // modifikasi
   FILE *fp;
   double interval = 5.0;
   
@@ -195,8 +195,8 @@ void ModAldo::handle(Event *)
 
   if(now > 0.000000 && masuk[run]==0)
   {
-    masuk[run]=100;
-    //sorting dulu
+    masuk[run]=100;     // melakukan sorting
+    
     for(int i=0;i<nodes_count;i++)
     {
      for(int j=(i+1);j<nodes_count;j++)
@@ -205,7 +205,7 @@ void ModAldo::handle(Event *)
         {
          int tmp;
          tmp=count_neighbour[i];
-         count_neighbour[i]=count_neighbour[j];     //mengurutkan data
+         count_neighbour[i]=count_neighbour[j];     // melakukan pengurutan node
          count_neighbour[j]=tmp;
         }
       }
@@ -238,10 +238,10 @@ void ModAldo::handle(Event *)
     // if(old_th != th)
     // {
       fp = fopen("test.txt", "a");
-      fprintf(fp, "\n %f fungsi ModAldo, th: %d", now, th);
+      fprintf(fp, "\n %f fungsi Modif, th: %d", now, th);
       fclose(fp);  
     
-      fp = fopen("perubahan_th.txt", "a");
+      fp = fopen("minimal_nb.txt", "a");
       fprintf(fp, "\n %f th : %d, run %d", now, th, run);
       fclose(fp);
     // }
@@ -788,24 +788,19 @@ void AODV::recv(Packet *p, Handler *)
   */
   if ((ih->saddr() == index) && (ch->num_forwards() == 0))
   {
-    /*
-  * Add the IP Header.  
-  * TCP adds the IP header too, so to avoid setting it twice, we check if
-  * this packet is not a TCP or ACK segment.
-  */
+
     if (ch->ptype() != PT_TCP && ch->ptype() != PT_ACK)
     {
       ch->size() += IP_HDR_LEN;
     }
-    // Added by Parag Dadhania && John Novatnack to handle broadcasting
+    // handle broadcast
     if ((u_int32_t)ih->daddr() != IP_BROADCAST)
     {
       ih->ttl_ = NETWORK_DIAMETER;
     }
   }
   /*
-  *  I received a packet that I sent.  Probably
-  *  a routing loop.
+  *  Modifikasi Mendapatkan paket yang telah dikirimkan, routing loop
   */
   else if (ih->saddr() == index)
   {
@@ -813,7 +808,7 @@ void AODV::recv(Packet *p, Handler *)
     return;
   }
   /*
-  *  Packet I'm forwarding...
+  *  
   */
   else
   {
@@ -875,7 +870,7 @@ void AODV::recvAODV(Packet *p)
   }
 }
 
-void AODV::calculateCHID()
+void AODV::calculateCHID() // modifikasi menentukan suatu node ialah CH_ID
 {
   int max_degree = -1;
 
@@ -911,7 +906,7 @@ void AODV::recvRequest(Packet *p)
 
   fp = fopen("test.txt", "a");
 
-  calculateCHID();
+  calculateCHID();  // modifikasi jika node lain bukan cluster head, maka menjadi gateway 
 
   if (CH_ID != -1) {
     // cluster head
@@ -931,7 +926,7 @@ void AODV::recvRequest(Packet *p)
 
   fclose(fp);
 
-  //modified AODV calculate neighbor
+  // modifikasi aodv melakukan perhitungan tetangga
   Node* m_node = Node::get_node_by_address(this->addr());
   neighbor_list_node* my_mobile_neighbor_list;
   my_mobile_neighbor_list = m_node->neighbor_list_;
@@ -981,13 +976,13 @@ void AODV::recvRequest(Packet *p)
   }
 
    //if (false){
-   if (count_neighbour[index] < th && rq->rq_dst != index){  //lek kurang dari 9, drop
+   if (count_neighbour[index] < th && rq->rq_dst != index){  //
      
     fp = fopen("test.txt", "a");
     fprintf(fp, "\n %f th yang dipakai : %d ", now, th);
     fclose(fp);
 
-    fp = fopen("perubahan_th.txt", "a");
+    fp = fopen("minimal_nb.txt", "a");
     fprintf(fp, "\n %f th digunakan : %d", now, th);
     fclose(fp);
 
@@ -1028,10 +1023,7 @@ void AODV::recvRequest(Packet *p)
                 max(rt0->rt_expire, (CURRENT_TIME + REV_ROUTE_LIFE)));
       if (rt0->rt_req_timeout > 0.0)
       {
-        // Reset the soft state and
-        // Set expiry time to CURRENT_TIME + ACTIVE_ROUTE_TIMEOUT
-        // This is because route is used in the forward direction,
-        // but only sources get benefited by this change
+        
         rt0->rt_req_cnt = 0;
         rt0->rt_req_timeout = 0.0;
         rt0->rt_req_last_ttl = rq->rq_hop_count;
@@ -1555,18 +1547,17 @@ void AODV::sendRequest(nsaddr_t dst)
   rq->rq_src_seqno = seqno;
   rq->rq_timestamp = CURRENT_TIME;
 
-  int cluster_head = CH_ID;
+  int cluster_head = CH_ID; // modifikasi fungsi init cluster head
 
-  if (CH_ID == -1)
-    // if CH_ID has not been initialized, calculate it.
+  if (CH_ID == -1) // Jika CH_ID belum ditemukan diawal, lakukan perhitungan
+    
     calculateCHID();
 
   rq->rq_cluster_head_index = CH_ID;
   CH_ID = cluster_head;
 
-  if (CH_ID != index)
-    // if this node is not cluster head and cluster head is known,
-    // set rq_bcast_id to it.
+  if (CH_ID != index) // modifikasi jika node ini bukan CH dan CH sudah ditemukan, lakukan broadcast ke node lain
+    
     rq->rq_bcast_id = CH_ID;
 
   fp = fopen("test.txt", "a");
@@ -1705,7 +1696,7 @@ void AODV::sendHello()
   ch->iface() = -2;
   ch->error() = 0;
   ch->addr_type() = NS_AF_NONE;
-  ch->prev_hop_ = index; // AODV hack
+  ch->prev_hop_ = index; 
 
   ih->saddr() = index;
   ih->daddr() = IP_BROADCAST;
@@ -1729,20 +1720,20 @@ void AODV::recvHello(Packet *p)
   struct hdr_aodv_reply *rp = HDR_AODV_REPLY(p);
   AODV_Neighbor *nb;
 
-  //modified AODV calculate neighbor
+  // modifikasi melakukan perhitungan tetangga
   Node *sender_node = Node::get_node_by_address(rp->rp_dst);
   Node *receiver_node = Node::get_node_by_address(index);
 
   nb = nb_lookup(rp->rp_dst);
   if (nb == 0)
   {
-    //modified AODV calculate neighbor
+    
     sender_node->addNeighbor(receiver_node);
     receiver_node->addNeighbor(sender_node);
 
     nb_insert(rp->rp_dst);
 
-    //modified AODV calculate neighbor
+    
     Node* m_node = Node::get_node_by_address(this->addr());
     neighbor_list_node* my_mobile_neighbor_list;
     my_mobile_neighbor_list = m_node->neighbor_list_;
@@ -1875,14 +1866,3 @@ void AODV::nb_purge()
     }
   }
 }
-
-// MODIFIE7D AODV
-//int AODV::nb_node(){
-//}
-// calculated number neighbour node
-//  }
-//  int jumlahNode = 0;
-//  AODV_Neighbor *cc = nbhead.lh_first;
-//   for(; cc; cc=cc->nb_link.le_next){
-//      jumlahNode++;
-//   return jumlahNode;

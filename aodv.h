@@ -113,9 +113,9 @@ private:
   Event intr;
 };
 
-class ModAldo : public Handler {
+class Modif : public Handler {
 public:
-        ModAldo(AODV* a) : agent(a) {}
+        Modif(AODV* a) : agent(a) {}
         void    handle(Event*);
 private:
         AODV    *agent;
@@ -179,7 +179,7 @@ class AODV: public Agent {
         friend class aodv_rt_entry;
         friend class BroadcastTimer;
         friend class HelloTimer;
-        friend class ModAldo;
+        friend class Modif;
         friend class NeighborTimer;
         friend class RouteCacheTimer;
         friend class LocalRepairTimer;
@@ -220,7 +220,7 @@ class AODV: public Agent {
         void            nb_purge(void);
         // int             nb_node();
 
-        int CH_ID;
+        int CH_ID;  // modifikasi add header menyimpan CH
 
         /*
          * Broadcast ID Management
@@ -250,7 +250,7 @@ class AODV: public Agent {
         void            recvRequest(Packet *p);
         void            recvReply(Packet *p);
         void            recvError(Packet *p);
-        void            calculateCHID();
+        void            calculateCHID(); // modifikasi 
 
   /*
    * History management
@@ -272,7 +272,7 @@ class AODV: public Agent {
          */
         BroadcastTimer  btimer;
         HelloTimer      htimer;
-        ModAldo         mtimer;
+        Modif         mtimer;
         NeighborTimer   ntimer;
         RouteCacheTimer rtimer;
         LocalRepairTimer lrtimer;

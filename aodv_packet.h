@@ -71,7 +71,7 @@ struct hdr_aodv {
 	}
 };
 
-struct hdr_aodv_request {
+struct hdr_aodv_request {     // modifikasi add cluster head 
   u_int8_t        rq_type;	// Packet Type
   u_int8_t        reserved[2];
   u_int8_t        rq_hop_count;   // Hop Count
@@ -87,9 +87,7 @@ struct hdr_aodv_request {
   int rq_cluster_head_index;
 					// used to compute route discovery latency
 
-  // This define turns on gratuitous replies- see aodv.cc for implementation contributed by
-  // Anant Utgikar, 09/16/02.
-  //#define RREQ_GRAT_RREP	0x80
+  
 
   inline int size() { 
     int sz = 0;
