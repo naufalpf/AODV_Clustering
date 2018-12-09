@@ -36,12 +36,10 @@ struct hdr_aodv {
 	// Header access methods
 	static int offset_; // required by PacketHeaderManager
 	inline static int& offset() { return offset_; }
-	inline static hdr_aodv* access(const Packet* p) {
-  	return (hdr_aodv*) p->access(offset_);
-	}
+	inline static hdr_aodv* access(const Packet* p) { return (hdr_aodv*) p->access(offset_);}
 };
 
-struct hdr_aodv_request {     // modifikasi add cluster head 
+struct hdr_aodv_request {   //RREQ packet
   u_int8_t        rq_type;	// Packet Type
   u_int8_t        reserved[2];
   u_int8_t        rq_hop_count;   // Hop Count
@@ -51,14 +49,14 @@ struct hdr_aodv_request {     // modifikasi add cluster head
   u_int32_t       rq_dst_seqno;   // Destination Sequence Number
   nsaddr_t        rq_src;         // Source IP Address
   u_int32_t       rq_src_seqno;   // Source Sequence Number
-   double          rq_min_life;    // modif for check min life for each node
+  double          rq_min_life;    // modif for check min life for each node
 
   double          rq_timestamp;   // when REQUEST sent;
-
-  int rq_cluster_head_index;
 					// used to compute route discovery latency
 
-  
+  // This define turns on gratuitous replies- see aodv.cc for implementation contributed by
+  // Anant Utgikar, 09/16/02.
+  //#define RREQ_GRAT_RREP	0x80
 
   inline int size() { 
     int sz = 0;
@@ -73,13 +71,13 @@ struct hdr_aodv_request {     // modifikasi add cluster head
 	     + sizeof(nsaddr_t)		// rq_src
 	     + sizeof(u_int32_t);	// rq_src_seqno
   */
-  	sz = 7*sizeof(u_int32_t);
+  	sz = 8*sizeof(u_int32_t);
   	assert (sz >= 0);
 	return sz;
   }
 };
 
-struct hdr_aodv_reply {
+struct hdr_aodv_reply {//RREP packet
   u_int8_t        rp_type;                // Packet Type
   u_int8_t        reserved[2];
   u_int8_t        rp_hop_count;           // Hop Count
