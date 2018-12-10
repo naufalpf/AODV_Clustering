@@ -1,0 +1,58 @@
+
+ 5.000000 th : 2, run 1
+ 10.000000 th : 2, run 2
+ 15.000000 th : 2, run 3
+ 20.000000 th : 2, run 4
+ 25.000000 th : 2, run 5
+ 30.000000 th : 2, run 6
+ 30.847091 th digunakan : 2
+ 30.856939 th digunakan : 2
+ 35.000000 th : 2, run 7
+ 40.000000 th : 2, run 8
+ 45.000000 th : 2, run 9
+ 49.719920 th digunakan : 2
+ 49.726684 th digunakan : 2
+ 50.000000 th : 2, run 10
+ 50.488194 th digunakan : 2
+ 52.001389 th digunakan : 2
+ 54.115047 th digunakan : 2
+ 55.000000 th : 2, run 11
+ 60.000000 th : 2, run 12
+ 65.000000 th : 2, run 13
+ 67.001249 th digunakan : 2
+ 67.008024 th digunakan : 2
+ 67.772672 th digunakan : 2
+ 69.429878 th digunakan : 2
+ 70.000000 th : 2, run 14
+ 71.608556 th digunakan : 2
+ 75.000000 th : 2, run 15
+ 80.000000 th : 2, run 16
+ 84.501109 th digunakan : 2
+ 84.506743 th digunakan : 2
+ 85.000000 th : 2, run 17
+ 85.402906 th digunakan : 2
+ 86.871504 th digunakan : 2
+ 89.001269 th digunakan : 2
+ 90.000000 th : 2, run 18
+ 95.000000 th : 2, run 19
+ 100.000000 th : 2, run 20
+ 105.000000 th : 2, run 21
+ 110.000000 th : 2, run 22
+ 115.000000 th : 2, run 23
+ 120.000000 th : 2, run 24
+ 125.000000 th : 2, run 25
+ 130.000000 th : 2, run 26
+ 135.000000 th : 2, run 27
+ 140.000000 th : 2, run 28
+ 145.000000 th : 2, run 29
+ 150.000000 th : 2, run 30
+ 155.000000 th : 2, run 31
+ 160.000000 th : 2, run 32
+ 165.000000 th : 2, run 33
+ 170.000000 th : 2, run 34
+ 175.000000 th : 2, run 35
+ 180.000000 th : 2, run 36
+ 185.000000 th : 2, run 37
+ 190.000000 th : 2, run 38
+ 195.000000 th : 2, run 39
+ 200.000000 th : 2, run 40

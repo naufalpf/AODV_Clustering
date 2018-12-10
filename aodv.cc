@@ -55,7 +55,7 @@ int AODV::command(int argc, const char *const *argv)
   //print fungsi
   double now = Scheduler::instance().clock(); // menampilkan waktu
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::command", now);
   fclose(fp);
 
@@ -141,6 +141,13 @@ AODV::AODV(nsaddr_t id) : Agent(PT_AODV),
   seqno = 2;
   bid = 1;
 
+    //init manet
+  xpos = 0.0; 
+  ypos = 0.0; 
+  zpos = 0.0; 
+  MobileNode *iNode; 
+  iEnergy = 1.0; 
+
   LIST_INIT(&nbhead);
   LIST_INIT(&bihead);
 
@@ -158,7 +165,7 @@ void BroadcastTimer::handle(Event *)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi BroadcastTimer::handle", now);
   fclose(fp);
 
@@ -171,7 +178,7 @@ void HelloTimer::handle(Event *)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi HelloTimer::handle", now);
   fclose(fp);
 
@@ -237,11 +244,11 @@ void Modif::handle(Event *)
     old_th = th;
     // if(old_th != th)
     // {
-      fp = fopen("test.txt", "a");
+      fp = fopen("debug.txt", "a");
       fprintf(fp, "\n %f fungsi Modif, th: %d", now, th);
       fclose(fp);  
     
-      fp = fopen("minimal_nb.txt", "a");
+      fp = fopen("threshold.txt", "a");
       fprintf(fp, "\n %f th : %d, run %d", now, th, run);
       fclose(fp);
     // }
@@ -257,7 +264,7 @@ void NeighborTimer::handle(Event *)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi NeighborTimer::handle", now);
   fclose(fp);
 
@@ -270,7 +277,7 @@ void RouteCacheTimer::handle(Event *)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi RouteCacheTimer::handle", now);
   fclose(fp);
 
@@ -284,7 +291,7 @@ void LocalRepairTimer::handle(Event *p)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi LocalRepairTimer::handle", now);
   fclose(fp);
 
@@ -323,7 +330,7 @@ void AODV::id_insert(nsaddr_t id, u_int32_t bid)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::id_insert", now);
   fclose(fp);
 
@@ -340,7 +347,7 @@ bool AODV::id_lookup(nsaddr_t id, u_int32_t bid)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::id_lookup", now);
   fclose(fp);
 
@@ -360,7 +367,7 @@ void AODV::id_purge()
   //print fungsi
   double nows = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::id_purge", nows);
   fclose(fp);
 
@@ -389,7 +396,7 @@ AODV::PerHopTime(aodv_rt_entry *rt)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::PerHopTime", now);
   fclose(fp);
 
@@ -423,7 +430,7 @@ aodv_rt_failed_callback(Packet *p, void *arg)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi aodv_rt_failed_callback", now);
   fclose(fp);
 
@@ -438,7 +445,7 @@ void AODV::rt_ll_failed(Packet *p)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::rt_ll_failed", now);
   fclose(fp);
 
@@ -501,7 +508,7 @@ void AODV::handle_link_failure(nsaddr_t id)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::handle_link_failure", now);
   fclose(fp);
 
@@ -550,7 +557,7 @@ void AODV::local_rt_repair(aodv_rt_entry *rt, Packet *p)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::local_rt_repair", now);
   fclose(fp);
 
@@ -576,7 +583,7 @@ void AODV::rt_update(aodv_rt_entry *rt, u_int32_t seqnum, u_int16_t metric,
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::rt_update", now);
   fclose(fp);
 
@@ -592,7 +599,7 @@ void AODV::rt_down(aodv_rt_entry *rt)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::rt_down", now);
   fclose(fp);
 
@@ -623,7 +630,7 @@ void AODV::rt_resolve(Packet *p)
   //print fungsi
   double nows = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::rt_resolve", nows);
   fclose(fp);
 
@@ -701,7 +708,7 @@ void AODV::rt_purge()
   //print fungsi
   double nows = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::rt_purge", nows);
   fclose(fp);
 
@@ -765,7 +772,7 @@ void AODV::recv(Packet *p, Handler *)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::recv ", now);
   fclose(fp);
 
@@ -833,7 +840,7 @@ void AODV::recvAODV(Packet *p)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::recvAODV", now);
   fclose(fp);
 
@@ -886,7 +893,7 @@ void AODV::calculateCHID() // modifikasi menentukan suatu node ialah CH_ID
     CH_ID = -1;
   }
 
-  FILE *fp = fopen("test.txt", "a");
+  FILE *fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::calculateCHID di node %d degreenya: %d, max_degree: %d, CH_ID: %d", CURRENT_TIME, index, count_neighbour[index], max_degree, CH_ID);
   fclose(fp);
 }
@@ -896,7 +903,7 @@ void AODV::recvRequest(Packet *p)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d jumlah tetangga %d ", now, index,count_neighbour[index]);
   fclose(fp);
 
@@ -904,23 +911,47 @@ void AODV::recvRequest(Packet *p)
   struct hdr_aodv_request *rq = HDR_AODV_REQUEST(p);
   aodv_rt_entry *rt;
 
-  fp = fopen("test.txt", "a");
+   //modifikasi
+  iNode=    (MobileNode *) (Node::get_node_by_address (index) ); 
+  xpos=     iNode->X(); 
+  ypos=     iNode->Y(); 
+  iEnergy=  iNode->energy_model()->energy();
+
+
+  #ifdef DEBUG
+    fp = fopen("debug.txt", "a");
+    fprintf(fp, "\n%.6f  fungsi Energi : saat ini di node %d dengan energy: %.4f, paket dari node %d ke node tujuan: %d dengan lifetime %.4f",  CURRENT_TIME, index, iEnergy, rq->rq_src, rq->rq_dst, rq->rq_min_life);
+    fclose(fp);   
+   #endif // DEBUG
+
+
+  if (rq->rq_min_life > iEnergy && iEnergy > 0){
+    #ifdef DEBUG
+     
+      fp = fopen("debug.txt", "a");
+      fprintf(fp, "\n%.6f  lifetime node %d dari %.4f menjadi energi baru sebesar %.4f", CURRENT_TIME, index, rq->rq_min_life, iEnergy);
+      fclose(fp);   
+     #endif // DEBUG
+    rq->rq_min_life=  iEnergy;
+  }
+
+  fp = fopen("debug.txt", "a");
 
   calculateCHID();  // modifikasi jika node lain bukan cluster head, maka menjadi gateway 
 
   if (CH_ID != -1) {
     // cluster head
-    fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, ini cluster head", now, index);
+    fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node cluster head", now, index, index);
   }
   else if (CH_ID == -1) {
     if (rq->rq_cluster_head_index != -1) {
       // gateway
       CH_ID = rq->rq_cluster_head_index;
-      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, ini gateway", now, index);
+      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node gateway cooperative", now, index, index);
     }
     else {
       // common member
-      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, ini member", now, index);
+      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node common member", now, index, index);
     }
   }
 
@@ -978,11 +1009,11 @@ void AODV::recvRequest(Packet *p)
    //if (false){
    if (count_neighbour[index] < th && rq->rq_dst != index){  //
      
-    fp = fopen("test.txt", "a");
+    fp = fopen("debug.txt", "a");
     fprintf(fp, "\n %f th yang dipakai : %d ", now, th);
     fclose(fp);
 
-    fp = fopen("minimal_nb.txt", "a");
+    fp = fopen("threshold.txt", "a");
     fprintf(fp, "\n %f th digunakan : %d", now, th);
     fclose(fp);
 
@@ -1140,7 +1171,7 @@ void AODV::recvReply(Packet *p)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::recvReply", now);
   fclose(fp);
 
@@ -1268,7 +1299,7 @@ void AODV::recvError(Packet *p)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::recvError", now);
   fclose(fp);
 
@@ -1342,12 +1373,28 @@ void AODV::forward(aodv_rt_entry *rt, Packet *p, double delay)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::forward", now);
   fclose(fp);
 
   struct hdr_cmn *ch = HDR_CMN(p);
   struct hdr_ip *ih = HDR_IP(p);
+
+   #ifdef DEBUG && index > 0
+    // manet
+    iNode=    (MobileNode *) (Node::get_node_by_address (index) ); 
+    xpos=     iNode->X(); 
+    ypos=     iNode->Y(); 
+    iEnergy=  iNode->energy_model()->energy();
+    fp = fopen("debug.txt", "a");
+    fprintf(fp, "\n%.6f  Posisi node %d adalah X =%.4f dan Y =%.4f",CURRENT_TIME, index, xpos, ypos); 
+    fprintf(fp, "\n%.6f  Energi untuk node %d sejumlah %.4f",CURRENT_TIME, index, iEnergy); 
+    fclose(fp);
+    // fprintf(fp, "\n%.6f  Routing agent is initialized for node %d", CURRENT_TIME, index); 
+    // fprintf(fp, "\n%.6f  Destination, NextHop, Hop, Seqno, expire, flag");
+    // fprintf(fp, "\n%.6f  NODE: %i %i %i %i %i %.4lf %d", CURRENT_TIME, rt->rt_dst, rt->rt_nexthop, rt->rt_hops, rt->rt_seqno, rt->rt_expire, rt->rt_flags);
+    // fprintf(fp, "\n%.6f  NODE: %d %d %d %d %d %.4f %d", CURRENT_TIME, rt->rt_dst, rt->rt_nexthop, rt->rt_hops, rt->rt_seqno, rt->rt_expire, rt->rt_flags); 
+  #endif
 
   if (ih->ttl_ == 0)
   {
@@ -1420,7 +1467,7 @@ void AODV::sendRequest(nsaddr_t dst)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::sendRequest sedang berada di node: %d", now, index);
   fclose(fp);
 
@@ -1535,6 +1582,8 @@ void AODV::sendRequest(nsaddr_t dst)
   ih->sport() = RT_PORT;
   ih->dport() = RT_PORT;
 
+  iNode=    (MobileNode *) (Node::get_node_by_address (index) ); 
+  iEnergy=  iNode->energy_model()->energy();
   // Fill up some more fields.
   rq->rq_type = AODVTYPE_RREQ;
   rq->rq_hop_count = 1;
@@ -1542,6 +1591,7 @@ void AODV::sendRequest(nsaddr_t dst)
   rq->rq_dst = dst;
   rq->rq_dst_seqno = (rt ? rt->rt_seqno : 0);
   rq->rq_src = index;
+  rq->rq_min_life=  iEnergy;
   seqno += 2;
   assert((seqno % 2) == 0);
   rq->rq_src_seqno = seqno;
@@ -1560,7 +1610,7 @@ void AODV::sendRequest(nsaddr_t dst)
     
     rq->rq_bcast_id = CH_ID;
 
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::sendRequest sedang berada di node: %d, rq_cluster_head_index: %d, CH_ID: %d", now, index, rq->rq_cluster_head_index, CH_ID);
   fclose(fp);
 
@@ -1573,7 +1623,7 @@ void AODV::sendReply(nsaddr_t ipdst, u_int32_t hop_count, nsaddr_t rpdst,
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::sendReply", now);
   fclose(fp);
 
@@ -1621,7 +1671,7 @@ void AODV::sendError(Packet *p, bool jitter)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::sendError", now);
   fclose(fp);
 
@@ -1670,7 +1720,7 @@ void AODV::sendHello()
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::sendHello sedang berada di node: %d, jumlah node %d", now, index, nodes_count);
   fclose(fp);
 
@@ -1712,7 +1762,7 @@ void AODV::recvHello(Packet *p)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::recvHello sedang berada di node: %d", now, index);
   fclose(fp);
 
@@ -1771,7 +1821,7 @@ void AODV::nb_insert(nsaddr_t id)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::nb_insert sedang berada di node: %d menambah node: %d jumlah tetangga %d", now, index, id, count_neighbour[index]);
   fclose(fp);
 
@@ -1791,7 +1841,7 @@ AODV::nb_lookup(nsaddr_t id)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::nb_lookup sedang berada di node: %d", now, index);
   fclose(fp);
 
@@ -1816,7 +1866,7 @@ void AODV::nb_delete(nsaddr_t id)
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::nb_delete sedang berada di node: %d menghapus node: %d jumlah tetangga %d", now, index, id, count_neighbour[index]);
   fclose(fp);
 
@@ -1849,7 +1899,7 @@ void AODV::nb_purge()
   //print fungsi
   double nows = Scheduler::instance().clock(); // get the time
   FILE *fp;
-  fp = fopen("test.txt", "a");
+  fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::nb_purge", nows);
   fclose(fp);
 

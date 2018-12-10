@@ -12,6 +12,7 @@
 #include <aodv/aodv_rtable.h>
 #include <aodv/aodv_rqueue.h>
 #include <classifier/classifier-port.h>
+#include <mobilenode.h>  //for manet and energy
 
 /*
   Allows local repair of routes 
@@ -307,7 +308,12 @@ class AODV: public Agent {
         void            log_link_kept(nsaddr_t dst);
 
         int cluster_id;
-
+        public: 
+          double      xpos; 
+          double      ypos; 
+          double      zpos; 
+          double      iEnergy; 
+          MobileNode   *iNode;
   /* for passing packets up to agents */
   PortClassifier *dmux_;
 
