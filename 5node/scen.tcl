@@ -23,8 +23,8 @@ set val(sc)					"setdes500x500.tcl"			;#<-- mobility file
 #energy
 #src: https://www.nsnam.com/2012/11/energy-model-in-network-simulator-2-ns2.html
 set val(energy_mod)         EnergyModel                 ;# energy model
-set val(energy_init)        5                           ;# init val for energy
-set val(tx_power)           0.33                        ;# energy consume for transmiting packet
+set val(energy_init)        1.682                           ;# init val for energy
+set val(tx_power)           0.332                        ;# energy consume for transmiting packet
 set val(rx_power)           0.1                         ;# energy consume for receiving packet
 set val(idle_power)         0.05                        ;# energy consume for idle
 set val(sleep_power)        0.03                        ;# energy consume for sleep mode
