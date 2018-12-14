@@ -43,11 +43,11 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
 ![Flowchart](/img/flow.jpg)
 
 * Cara kerja Clustering AODV :
-  1. Fase memilih Cluster Head
+  *1. Fase memilih Cluster Head*
      * Dalam fase ini setiap node mengirimkan hello message ke node lainnya untuk menentukan jumlah node tetangga. Sebuah node yang memiliki jumlah tetangga terbanyak akan menjadi cluster head.
      * Cluster heads mengirimkan pesan yang berisi ID nya ke seluruh node tetangganya. Dan ketika node tetangga menerima pesan yang berupa ID dari cluster head, node tetangga tersebut akan membalas dan bergabung dengan cluster. Berikut adalah proses dari fase memilih cluster head
      
-  2. Fase memilih Gateway
+  *2. Fase memilih Gateway*
     * Dua kategori gateway digunakan. kategori gateway yang pertama adalah gateway umum yang mendukung dua cluster head untuk berkomunikasi satu sama lain. 
     * Kategori gateway yang kedua adalah cooperative gateway yang harus bekerja sama untuk menjamin komunikasi antara dua cluster heads. Sebuah node bisa memilih salah satu dari dua kategori gateway untuk mendukung cluster heads yang berbeda.
   * Berikut adalah proses dari Fase memilih gateway. 
