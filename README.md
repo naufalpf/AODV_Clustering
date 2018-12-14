@@ -6,6 +6,22 @@
      5115100057
      Kelas Jaringan Nirkabel 2018
 ---
+## Outline
+  - [1. Konsep](#1-konsep)
+    - [1.1 Deskripsi Paper](#11-deskripsi-paper)
+    - [1.2 Latar Belakang](#12-latar-belakang)
+    - [1.3 Tujuan Clustering AODV](#13-tujuan-clustering-aodv)
+    - [1.4 Solusi Modifikasi](#14-solusi-modifikasi-aodv)
+  - [2. Implementasi](#2-implementasi-modifikasi)
+    - [2.1 Penjelasan Modifikasi](#21-penjelasan-singkat-modifikasi-aodv)
+    - [2.2 Cara Kerja](#22-cara-kerja-clustering-aodv)
+    - [2.3 Modifikasi](#23-modifikasi)
+  - [3. Testing](#3-referensi)
+
+1. [Penjelasan](#1-konsep)
+2. [Modifikasi](#2-implementasi-modifikasi)
+3. [Referensi](#referensi)
+
 ## 1. Konsep
 #### 1.1 Deskripsi Paper
 
@@ -24,22 +40,22 @@ Implementasi MAODV didasarkan pada paper berikut :
 #### 1.3 Tujuan Clustering AODV
 * Tujuan dari Modifikasi adalah :
   * Mencari rute paling **optimal** dari node asal ke node tujuan pada jaringan MANET duntuk mengurangi **propagasi pesan kontrol**
-  * Menghemat energi dan **memperpanjang network lifetime** dalam jaringan sensor nirkanel
+  * Menghemat energi dan **memperpanjang network lifetime** dalam jaringan sensor nirkabel
   * Mencari rute paling **stabil** dari segi **sisa masa hidup node**
-  
- #### 1.4 Penjelasan singkat solusi modifikasi AODV
+
+#### 1.4 Solusi Moodifikasi AODV
  * Mengusulkan suatu algoritma clustering yang bernama AODV based on Node Degree Clustering and Second Search (AODVNDC-SS)
  * Di dalam algoritma ini node dikelompokkan sesuai dengan derajat nodenya untuk mengurangi propagasi pesan control menggunakan cluster heads.
  * Digunakan gateway umum atau gateway kooperatif untuk menghubungkan dua cluster heads (CHs) untuk mengurangi konsumsi energi cluster heads.
 
 
-## 2. Modifikasi AODV
+## 2. Implementasi Modifikasi
 ![CH](/img/ch.jpg)
 
 #### 2.1 Penjelasan singkat modifikasi AODV
 Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini mengusulkan suatu algoritma clustering yang bernama AODV based on Node Degree Clustering and Second Search (AODVNDC-SS) untuk mengontrol mekanisme flooding saat membangun suatu rute baru di protokol AODV. Di dalam algoritma ini node dikelompokkan sesuai dengan derajat nodenya untuk mengurangi propagasi pesan control. Node yang memiliki jumlah tetangga terbanyak akan menjadi **Cluster Head**. Pada saat yang sama, digunakan **gateway alternatif** dan **gateway kooperatif** untuk menghubungkan dua cluster heads (CHs) untuk mengurangi konsumsi energi cluster heads. Dengan menggunakan algoritma clustering ini akan menghemat energi dan memperpanjang network lifetime dalam jaringan sensor nirkabel.
 
-#### 2.2 Cara Kerja Clustering AODV
+#### 2.2 Cara Kerja
 ![Flowchart](/img/flow.jpg)
 
 * Cara kerja Clustering AODV :
@@ -78,7 +94,7 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
 6. Jika ada node penghubung antara dua Cluster Head, node tersebut menjadi gateway biasa. Jika tidak, maka menjadi **Cooperative Gateway** yang berguna untuk menjamin komunikasi antar node
 7. Ketika node destinasi menerima pesan RE-RREQ. Node tujuan mengirim ulang pesan RREP (RE-RREP) ke node sumber dengan reverse route, ketika node sumber menerima pesan RE-RREP, rute lebih pendek akan dibuat.
 
-#### Link Referensi
+#### 3. Link Referensi
 - https://ieeexplore.ieee.org/document/8343729
 - https://arxiv.org/pdf/1007.4065.pdf
 - http://intip.in/RA2018
