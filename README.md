@@ -7,7 +7,7 @@
      Kelas Jaringan Nirkabel 2018
 ---
 ## 1. Konsep
-### 1.1 Deskripsi Paper
+#### 1.1 Deskripsi Paper
 
 Implementasi MAODV didasarkan pada paper berikut :
 
@@ -48,25 +48,25 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
      * Cluster heads mengirimkan pesan yang berisi ID nya ke seluruh node tetangganya. Dan ketika node tetangga menerima pesan yang berupa ID dari cluster head, node tetangga tersebut akan membalas dan bergabung dengan cluster. Berikut adalah proses dari fase memilih cluster head
      
   2. Fase memilih Gateway
-  * Dua kategori gateway digunakan. kategori gateway yang pertama adalah gateway umum yang mendukung dua cluster head untuk berkomunikasi satu sama lain. 
-  * Kategori gateway yang kedua adalah cooperative gateway yang harus bekerja sama untuk menjamin komunikasi antara dua cluster heads. Sebuah node bisa memilih salah satu dari dua kategori gateway untuk mendukung cluster heads yang berbeda.
-  Berikut adalah proses dari Fase memilih gateway. 
+    * Dua kategori gateway digunakan. kategori gateway yang pertama adalah gateway umum yang mendukung dua cluster head untuk berkomunikasi satu sama lain. 
+    * Kategori gateway yang kedua adalah cooperative gateway yang harus bekerja sama untuk menjamin komunikasi antara dua cluster heads. Sebuah node bisa memilih salah satu dari dua kategori gateway untuk mendukung cluster heads yang berbeda.
+  * Berikut adalah proses dari Fase memilih gateway. 
   ![Flowchart](/img/flow2.jpg)
   
 
   3. Fase Pemilihan Rute
-  * Ketika sebuah node akan mengirim data ke node tujuan, node tersebut memeriksa apakah node tetangganya mengandung node tujuan. 
-  * Jika iya, data akan dikirim ke node tetangga secara langsung. Jika tidak, node tersebut akan mencari tabel routingnya untuk mencari rute efektif ke node tujuan. 
-  * Jika rute ditemukan, rute tersebut digunakan untuk mengirim data. Jika tidak, node tersebut akan mengirimkan pesan broadcast untuk menemukan jalur ke node tujuan. 
+    * Ketika sebuah node akan mengirim data ke node tujuan, node tersebut memeriksa apakah node tetangganya mengandung node tujuan. 
+    * Jika iya, data akan dikirim ke node tetangga secara langsung. Jika tidak, node tersebut akan mencari tabel routingnya untuk mencari rute efektif ke node tujuan. 
+    * Jika rute ditemukan, rute tersebut digunakan untuk mengirim data. Jika tidak, node tersebut akan mengirimkan pesan broadcast untuk menemukan jalur ke node tujuan. 
 
   
   4. Fase Pengiriman Paket
-  * Jika node sumber adalah node biasa, node tersebut akan mengirim RREQ(Route Request) ke cluster heads dan cluster heads mengambil alih transmisi ini. 
-  * Jika node sumber adalah cluster heads, ia akan mengirim RREQ ke common gateways atau cooperative gateway dan gateway mengambil alih transmisi ini. 
-  * Jika node sumber adalah common gateway atau cooperative gateway, node tersebut akan mengirim RREQ ke cluster heads hilir atau cooperative gateway. ketika node tujuan menerima pesan RREQ, reverse route dibangun. Node tujuan mengirim RREP ke node sumber sesuai dengan reverse route. Ketika node sumber menerima pesan RREP, forward route akan dibangun.
-  * Node sumber melakukan broadcast ulang RREQ (RE-RREQ) pesan. Berbeda dari pesan RREQ, RE-RREQ tidak di broadcast ke semua cluster heads dan gateway. RE-RREQ hanya akan dikirim ke node yang merupakan tetangga dari node pada rute sebelumnya. Ketika node tujuan menerima pesan RE-RREQ, reverse route baru akan dibuat. 
-  * Node tujuan mengirim ulang pesan RREP (RE-RREP) ke node sumber sesuai dengan reverse route baru. Ketika node sumber menerima pesan RE-RREP, rute forward baru dibuat. Kemudian, data dapat dikirim melalui rute baru. Proses memilih rute yang lebih pendek dapat dilihat digambar dibawah ini
-![CH2](/img/ch2.jpg)
+    * Jika node sumber adalah node biasa, node tersebut akan mengirim RREQ(Route Request) ke cluster heads dan cluster heads mengambil alih transmisi ini. 
+    * Jika node sumber adalah cluster heads, ia akan mengirim RREQ ke common gateways atau cooperative gateway dan gateway mengambil alih transmisi ini. 
+    * Jika node sumber adalah common gateway atau cooperative gateway, node tersebut akan mengirim RREQ ke cluster heads hilir atau cooperative gateway. ketika node tujuan menerima pesan RREQ, reverse route dibangun. Node tujuan mengirim RREP ke node sumber sesuai dengan reverse route. Ketika node sumber menerima pesan RREP, forward route akan dibangun.
+    * Node sumber melakukan broadcast ulang RREQ (RE-RREQ) pesan. Berbeda dari pesan RREQ, RE-RREQ tidak di broadcast ke semua cluster heads dan gateway. RE-RREQ hanya akan dikirim ke node yang merupakan tetangga dari node pada rute sebelumnya. Ketika node tujuan menerima pesan RE-RREQ, reverse route baru akan dibuat. 
+    * Node tujuan mengirim ulang pesan RREP (RE-RREP) ke node sumber sesuai dengan reverse route baru. Ketika node sumber menerima pesan RE-RREP, rute forward baru dibuat. Kemudian, data dapat dikirim melalui rute baru. Proses memilih rute yang lebih pendek dapat dilihat digambar dibawah ini
+    ![CH2](/img/ch2.jpg)
 
 #### 2.3 Modifikasi yang dilakukan
 1. Membuat global variable baru yang berfungsi untuk menyipan jumlah tetangga dari tiap node dalam *aodv_packet.h* pada hdr_aodv_reply berupa **rp_chid** dan menggunakan ++ nb_insert dan -- nb_delete.
