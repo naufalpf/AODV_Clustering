@@ -53,12 +53,14 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
   Berikut adalah proses dari Fase memilih gateway. 
   ![Flowchart](/img/flow2.jpg)
   
+
   3. Fase Pemilihan Rute
   * Ketika sebuah node akan mengirim data ke node tujuan, node tersebut memeriksa apakah node tetangganya mengandung node tujuan. 
   * Jika iya, data akan dikirim ke node tetangga secara langsung. Jika tidak, node tersebut akan mencari tabel routingnya untuk mencari rute efektif ke node tujuan. 
   * Jika rute ditemukan, rute tersebut digunakan untuk mengirim data. Jika tidak, node tersebut akan mengirimkan pesan broadcast untuk menemukan jalur ke node tujuan. 
+
   
-  4. Fase Pengiriman
+  4. Fase Pengiriman Paket
   * Jika node sumber adalah node biasa, node tersebut akan mengirim RREQ(Route Request) ke cluster heads dan cluster heads mengambil alih transmisi ini. 
   * Jika node sumber adalah cluster heads, ia akan mengirim RREQ ke common gateways atau cooperative gateway dan gateway mengambil alih transmisi ini. 
   * Jika node sumber adalah common gateway atau cooperative gateway, node tersebut akan mengirim RREQ ke cluster heads hilir atau cooperative gateway. ketika node tujuan menerima pesan RREQ, reverse route dibangun. Node tujuan mengirim RREP ke node sumber sesuai dengan reverse route. Ketika node sumber menerima pesan RREP, forward route akan dibangun.
