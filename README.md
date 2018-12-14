@@ -18,10 +18,6 @@
     - [2.3 Modifikasi](#23-modifikasi)
   - [3. Testing](#3-referensi)
 
-1. [Penjelasan](#1-konsep)
-2. [Modifikasi](#2-implementasi-modifikasi)
-3. [Referensi](#referensi)
-
 ## 1. Konsep
 #### 1.1 Deskripsi Paper
 
@@ -94,7 +90,7 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
 6. Jika ada node penghubung antara dua Cluster Head, node tersebut menjadi gateway biasa. Jika tidak, maka menjadi **Cooperative Gateway** yang berguna untuk menjamin komunikasi antar node
 7. Ketika node destinasi menerima pesan RE-RREQ. Node tujuan mengirim ulang pesan RREP (RE-RREP) ke node sumber dengan reverse route, ketika node sumber menerima pesan RE-RREP, rute lebih pendek akan dibuat.
 
-#### 3. Link Referensi
+#### 3. Referensi
 - https://ieeexplore.ieee.org/document/8343729
 - https://arxiv.org/pdf/1007.4065.pdf
 - http://intip.in/RA2018
