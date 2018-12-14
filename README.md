@@ -82,13 +82,27 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
     ![CH2](/img/ch2.jpg)
 
 #### 2.3 Modifikasi
-1. Membuat global variable baru yang berfungsi untuk menyipan jumlah tetangga dari tiap node dalam *aodv_packet.h* pada hdr_aodv_reply berupa **rp_chid** dan menggunakan ++ nb_insert dan -- nb_delete.
-2. Menambah field dan array **CH** dan **NodeNeighbor** untuk menyimpan ID node cluster head dan jumlah tetangga tiap node pada *recv request dan recv reply*
-3. Menambah atribut koordinat dan **CH ID** neighbor node pada class AODV_Neighbor dalam file *aodv_rtable.h*
-4. Melakukan request ke node tetangga dan simpan informasi dari node tersebut berupa berapa jumlah tetangganya, dan labeli node dengan jumlah tetangga terbanyak menjadi **Cluster Head** menggunakan logika "if else" pada recv reply pada *aodv.cc*
-5. Cluster Head Melakukan re-broadcast **RE-RREQ** ke node lain untuk mendeklarasikan dirinya ialah Cluster Head pada recv request
-6. Jika ada node penghubung antara dua Cluster Head, node tersebut menjadi gateway biasa. Jika tidak, maka menjadi **Cooperative Gateway** yang berguna untuk menjamin komunikasi antar node
-7. Ketika node destinasi menerima pesan RE-RREQ. Node tujuan mengirim ulang pesan RREP (RE-RREP) ke node sumber dengan reverse route, ketika node sumber menerima pesan RE-RREP, rute lebih pendek akan dibuat.
+1. Menambahkan field _neighbor_list_node, _count_neighbour, dan _CH_ID_ pada RREQ Message Format di **aodv.cc**
+    - _count_neighbour_ merupakan variabel global untuk melakukan perhitungan jumlah tetangga tiap node
+    - _neighbor_list_node_ untuk menyimpan berapa jumlah tetangga dalam tiap node
+    - _CH_ID_ digunakan untuk menyimpan ID CH jika suatu node telah ditetapkan sebagai *Cluster Head* dari perhitungan setelah hello messages
+
+2. Menambahkan field _rq_cluster_head_index_ pada fungsi **struct hdr_aodv_request** di file **aodv_packet.h** 
+
+3. Melakukan inisialisasi paket yang dikirim pada fungsi **AODV::nb_insert** dan **AODV::nb_delete** yang ada di **aodv.cc**
+    - **count_neighbour[index]** diberi nilai 0 yang nantinya akan mengalami perubahan setelah mengetahui jumlah tetangga
+    - **nbhead.lh_first** 
+
+4. Melakukan modifikasi melakukan perhitungan dan menentukan suatu node itu _Cluster Head_ atau bukan dengan menggunakan _max degree_  melalui fungsi **AODV::calculateCHID** dan **AODV::recvRequest** pada file **aodv.cc** dimana
+    - _max degree_ merupakan threshold dimana node dengan tetangga paling tinggi akan dijadikan kandidat dan acuan pemilihan cluster head
+    - jika _CH_ID_ = -1, maka node tersebut otomatis menjadi _gateway cooperative_ dan _gateway alternatif_
+
+5. Modifikasi **AODV::sendRequest**, **AODV::sendHello**, dan **AODV::recvHello** yang digunakan oleh sebuah node untuk mendeklarasikan dirinya ialah _Cluster Head_ ke node lain melalui re-broadcast **RE-RREQ**
+    - _CH_ID == -1_ Jika CH_ID belum ditemukan diawal, lakukan perhitungan. Jika sudah ditemukan, broadcast ke node lain
+    - _nodes_count_ untuk mengetahui sudah berapa jumlah node yang sudah dihitung tetangganya
+    -  _Node *sender_node_ dan _Node *receiver_node_ untuk mengetahui asal dan node tujuan
+
+6. Jika ada node penghubung antara dua Cluster Head, node tersebut menjadi **gateway cooperative**. Jika tidak, maka menjadi **gateway alternatif** yang berguna untuk menjamin komunikasi antar node selain CH. Lalu membandingkan rutenya hanya melewati _Cluster Head_ saja. Jika tidak, maka paken akan di drop dan _routing table_ akan diupdate
 
 #### 3. Referensi
 - https://ieeexplore.ieee.org/document/8343729
