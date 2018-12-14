@@ -43,7 +43,7 @@ Implementasi MAODV didasarkan pada paper berikut :
   * Menghemat energi dan **memperpanjang network lifetime** dalam jaringan sensor nirkabel
   * Mencari rute paling **stabil** dari segi **sisa masa hidup node**
 
-#### 1.4 Solusi Moodifikasi AODV
+#### 1.4 Solusi Modifikasi AODV
  * Mengusulkan suatu algoritma clustering yang bernama AODV based on Node Degree Clustering and Second Search (AODVNDC-SS)
  * Di dalam algoritma ini node dikelompokkan sesuai dengan derajat nodenya untuk mengurangi propagasi pesan control menggunakan cluster heads.
  * Digunakan gateway umum atau gateway kooperatif untuk menghubungkan dua cluster heads (CHs) untuk mengurangi konsumsi energi cluster heads.
@@ -55,7 +55,7 @@ Implementasi MAODV didasarkan pada paper berikut :
 #### 2.1 Penjelasan singkat modifikasi AODV
 Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini mengusulkan suatu algoritma clustering yang bernama AODV based on Node Degree Clustering and Second Search (AODVNDC-SS) untuk mengontrol mekanisme flooding saat membangun suatu rute baru di protokol AODV. Di dalam algoritma ini node dikelompokkan sesuai dengan derajat nodenya untuk mengurangi propagasi pesan control. Node yang memiliki jumlah tetangga terbanyak akan menjadi **Cluster Head**. Pada saat yang sama, digunakan **gateway alternatif** dan **gateway kooperatif** untuk menghubungkan dua cluster heads (CHs) untuk mengurangi konsumsi energi cluster heads. Dengan menggunakan algoritma clustering ini akan menghemat energi dan memperpanjang network lifetime dalam jaringan sensor nirkabel.
 
-#### 2.2 Cara Kerja
+#### 2.2 Cara Kerja Clustering AODV
 ![Flowchart](/img/flow.jpg)
 
 * Cara kerja Clustering AODV :
@@ -85,7 +85,7 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
     * Node tujuan mengirim ulang pesan RREP (RE-RREP) ke node sumber sesuai dengan reverse route baru. Ketika node sumber menerima pesan RE-RREP, rute forward baru dibuat. Kemudian, data dapat dikirim melalui rute baru. Proses memilih rute yang lebih pendek dapat dilihat digambar dibawah ini
     ![CH2](/img/ch2.jpg)
 
-#### 2.3 Modifikasi yang dilakukan
+#### 2.3 Modifikasi
 1. Membuat global variable baru yang berfungsi untuk menyipan jumlah tetangga dari tiap node dalam *aodv_packet.h* pada hdr_aodv_reply berupa **rp_chid** dan menggunakan ++ nb_insert dan -- nb_delete.
 2. Menambah field dan array **CH** dan **NodeNeighbor** untuk menyimpan ID node cluster head dan jumlah tetangga tiap node pada *recv request dan recv reply*
 3. Menambah atribut koordinat dan **CH ID** neighbor node pada class AODV_Neighbor dalam file *aodv_rtable.h*
