@@ -89,6 +89,8 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
 
 2. Menambahkan field _rq_cluster_head_index_ pada fungsi **struct hdr_aodv_request** di file **aodv_packet.h** 
 
+3. Menambahkan header _CH_ID_ untuk melakukan penyimpanan node _cluster head_ dan fungsi _Modif_ serta_calculateCHID()_ untuk menginisiasi fungsi perhitungan pada file **aodv.h**
+
 3. Melakukan inisialisasi paket yang dikirim pada fungsi **AODV::nb_insert** dan **AODV::nb_delete** yang ada di **aodv.cc**
     - **count_neighbour[index]** diberi nilai 0 yang nantinya akan mengalami perubahan setelah mengetahui jumlah tetangga
     - **nbhead.lh_first** 
