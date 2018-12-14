@@ -141,6 +141,13 @@ AODV::AODV(nsaddr_t id) : Agent(PT_AODV),
   seqno = 2;
   bid = 1;
 
+    //init manet
+  xpos = 0.0; 
+  ypos = 0.0; 
+  zpos = 0.0; 
+  MobileNode *iNode; 
+  iEnergy = 1.0; 
+
   LIST_INIT(&nbhead);
   LIST_INIT(&bihead);
 
@@ -904,6 +911,31 @@ void AODV::recvRequest(Packet *p)
   struct hdr_aodv_request *rq = HDR_AODV_REQUEST(p);
   aodv_rt_entry *rt;
 
+   //modifikasi
+  iNode=    (MobileNode *) (Node::get_node_by_address (index) ); 
+  xpos=     iNode->X(); 
+  ypos=     iNode->Y(); 
+  iEnergy=  iNode->energy_model()->energy();
+
+
+  #ifdef DEBUG
+    FILE *fp;
+    fp = fopen("debug.txt", "a");
+    fprintf(fp, "\n%.6f  %s: in node %d with energy %.4f, packet from node %d to node destination %d rq_lifetime %.4f",  CURRENT_TIME, __FUNCTION__, index, iEnergy, rq->rq_src, rq->rq_dst, rq->rq_min_life);
+    fclose(fp);   
+   #endif // DEBUG
+
+
+  if (rq->rq_min_life > iEnergy && iEnergy > 0){
+    #ifdef DEBUG
+      FILE *fp;
+      fp = fopen("debug.txt", "a");
+      fprintf(fp, "\n%.6f  updating rq_min_life from %.4f to %.4f", CURRENT_TIME, rq->rq_min_life, iEnergy);
+      fclose(fp);   
+     #endif // DEBUG
+    rq->rq_min_life=  iEnergy;
+  }
+
   fp = fopen("test.txt", "a");
 
   calculateCHID();  // modifikasi jika node lain bukan cluster head, maka menjadi gateway 
@@ -1349,6 +1381,22 @@ void AODV::forward(aodv_rt_entry *rt, Packet *p, double delay)
   struct hdr_cmn *ch = HDR_CMN(p);
   struct hdr_ip *ih = HDR_IP(p);
 
+   #ifdef DEBUG && index > 0
+    // manet
+    iNode=    (MobileNode *) (Node::get_node_by_address (index) ); 
+    xpos=     iNode->X(); 
+    ypos=     iNode->Y(); 
+    iEnergy=  iNode->energy_model()->energy();
+    fp = fopen("debug.txt", "a");
+    fprintf(fp, "\n%.6f  Position of node %d is X =%.4f and Y =%.4f",CURRENT_TIME, index, xpos, ypos); 
+    fprintf(fp, "\n%.6f  Updated Energy for node %d is Energy %.4f",CURRENT_TIME, index, iEnergy); 
+    fclose(fp);
+    // fprintf(fp, "\n%.6f  Routing agent is initialized for node %d", CURRENT_TIME, index); 
+    // fprintf(fp, "\n%.6f  Destination, NextHop, Hop, Seqno, expire, flag");
+    // fprintf(fp, "\n%.6f  NODE: %i %i %i %i %i %.4lf %d", CURRENT_TIME, rt->rt_dst, rt->rt_nexthop, rt->rt_hops, rt->rt_seqno, rt->rt_expire, rt->rt_flags);
+    // fprintf(fp, "\n%.6f  NODE: %d %d %d %d %d %.4f %d", CURRENT_TIME, rt->rt_dst, rt->rt_nexthop, rt->rt_hops, rt->rt_seqno, rt->rt_expire, rt->rt_flags); 
+  #endif
+
   if (ih->ttl_ == 0)
   {
 
@@ -1535,6 +1583,8 @@ void AODV::sendRequest(nsaddr_t dst)
   ih->sport() = RT_PORT;
   ih->dport() = RT_PORT;
 
+  iNode=    (MobileNode *) (Node::get_node_by_address (index) ); 
+  iEnergy=  iNode->energy_model()->energy();
   // Fill up some more fields.
   rq->rq_type = AODVTYPE_RREQ;
   rq->rq_hop_count = 1;
@@ -1542,6 +1592,7 @@ void AODV::sendRequest(nsaddr_t dst)
   rq->rq_dst = dst;
   rq->rq_dst_seqno = (rt ? rt->rt_seqno : 0);
   rq->rq_src = index;
+  rq->rq_min_life=  iEnergy;
   seqno += 2;
   assert((seqno % 2) == 0);
   rq->rq_src_seqno = seqno;
