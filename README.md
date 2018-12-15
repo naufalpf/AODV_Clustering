@@ -70,6 +70,7 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
     * Jika node sumber adalah common gateway atau cooperative gateway, node tersebut akan mengirim RREQ ke cluster heads hilir atau cooperative gateway. ketika node tujuan menerima pesan RREQ, reverse route dibangun. Node tujuan mengirim RREP ke node sumber sesuai dengan reverse route. Ketika node sumber menerima pesan RREP, forward route akan dibangun.
     * Node sumber melakukan broadcast ulang RREQ (RE-RREQ) pesan. Berbeda dari pesan RREQ, RE-RREQ tidak di broadcast ke semua cluster heads dan gateway. RE-RREQ hanya akan dikirim ke node yang merupakan tetangga dari node pada rute sebelumnya. Ketika node tujuan menerima pesan RE-RREQ, reverse route baru akan dibuat. 
     * Node tujuan mengirim ulang pesan RREP (RE-RREP) ke node sumber sesuai dengan reverse route baru. Ketika node sumber menerima pesan RE-RREP, rute forward baru dibuat. Kemudian, data dapat dikirim melalui rute baru. Proses memilih rute yang lebih pendek dapat dilihat digambar dibawah ini
+    
     ![CH2](/img/ch2.jpg)
 
 #### 2.3 Modifikasi
