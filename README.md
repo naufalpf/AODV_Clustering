@@ -110,7 +110,7 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
 ## 3. Testing
 #### 3.1 Testing Skenario Paper
 * Pada paper  **An Optimized AODV Protocol Based on Clustering for WSNs** menggunakan skenario 15 node statis.
-* Digunakan shortest route untuk melakukan pengiriman paket serta reverse routenya. Berikut adalah simulasinya pada NS-2:
+* Digunakan shortest path untuk melakukan pengiriman paket serta reverse routenya. Berikut adalah simulasinya pada NS-2:
 ![CH2](/img/start.jpg)
 ![CH2](/img/end.jpg)
 
