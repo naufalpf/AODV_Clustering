@@ -17,7 +17,7 @@
     - [2.2 Cara Kerja](#22-cara-kerja-clustering-aodv)
     - [2.3 Modifikasi](#23-modifikasi)
   - [3. Testing](#3-testing)
-  - [4. Referensi](#3-referensi)
+  - [4. Referensi](#4-referensi)
 
 ## 1. Konsep
 #### 1.1 Deskripsi Paper
