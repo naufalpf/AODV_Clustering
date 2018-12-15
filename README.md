@@ -16,7 +16,8 @@
     - [2.1 Penjelasan Modifikasi](#21-penjelasan-singkat-modifikasi-aodv)
     - [2.2 Cara Kerja](#22-cara-kerja-clustering-aodv)
     - [2.3 Modifikasi](#23-modifikasi)
-  - [3. Testing](#3-referensi)
+  - [3. Testing](#3-testing)
+  - [4. Referensi](#3-referensi)
 
 ## 1. Konsep
 #### 1.1 Deskripsi Paper
@@ -106,7 +107,15 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
 
 6. Jika ada node penghubung antara dua Cluster Head, node tersebut menjadi **gateway cooperative**. Jika tidak, maka menjadi **gateway alternatif** yang berguna untuk menjamin komunikasi antar node selain CH. Lalu membandingkan rutenya hanya melewati _Cluster Head_ saja. Jika tidak, maka paken akan di drop dan _routing table_ akan diupdate
 
-#### 3. Referensi
+## 3. Testing
+#### 3.1 Testing Skenario Paper
+* Pada paper  **An Optimized AODV Protocol Based on Clustering for WSNs** menggunakan skenario 15 node statis.
+* Digunakan shortest route untuk melakukan pengiriman paket serta reverse routenya. Berikut adalah simulasinya pada NS-2:
+![CH2](/img/start.jpg)
+![CH2](/img/end.jpg)
+
+
+### 4. Referensi
 - https://ieeexplore.ieee.org/document/8343729
 - https://arxiv.org/pdf/1007.4065.pdf
 - http://intip.in/RA2018
