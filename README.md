@@ -108,9 +108,9 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
 6. Jika ada node penghubung antara dua Cluster Head, node tersebut menjadi **gateway cooperative**. Jika tidak, maka menjadi **gateway alternatif** yang berguna untuk menjamin komunikasi antar node selain CH. Lalu membandingkan rutenya hanya melewati _Cluster Head_ saja. Jika tidak, maka paken akan di drop dan _routing table_ akan diupdate
 
 ## 3. Testing
-#### 3.1 Testing Skenario Paper
+#### Testing Skenario Paper
 * Pada paper  **An Optimized AODV Protocol Based on Clustering for WSNs** menggunakan skenario 15 node statis.
-* Digunakan shortest path untuk melakukan pengiriman paket serta reverse routenya. Berikut adalah hasil debugnya dan simulasi [Debug](/testing-skenario-paper) pada NS-2:
+* Digunakan shortest path untuk melakukan pengiriman paket serta reverse routenya. Berikut adalah hasil debugnya dan simulasi [Debug](/testing-skenario-paper) pada NS-2 dimana _node 0_ adalah source node dan _node 14_ adalah destination node:
 ![CH2](/img/start.jpg)
 ![CH2](/img/end.jpg)
 
