@@ -15,8 +15,8 @@ int count_neighbour[1000];    // menghitung jumlah tetangga tiap node
 int count_mode[1000];        // menghitung modus
 int masuk[1000];
 //count_neighbour = new int[0];
-int nodes_count=0;
-int th = 0;
+int nodes_count=0;            // modifikasi jumlah node terhitung
+int th = 0;                 // menghitung threshold
 int old_th;
 
 #ifdef DEBUG
@@ -141,7 +141,7 @@ AODV::AODV(nsaddr_t id) : Agent(PT_AODV),
   seqno = 2;
   bid = 1;
 
-    //init manet
+                         // inisiasi manet dan energi
   xpos = 0.0; 
   ypos = 0.0; 
   zpos = 0.0; 
@@ -153,7 +153,7 @@ AODV::AODV(nsaddr_t id) : Agent(PT_AODV),
 
   logtarget = 0;
   ifqueue = 0;
-  CH_ID = -1;
+  CH_ID = -1;          // modifikasi inisiasi penyimpanan cluster head
 }
 
 /*
@@ -191,9 +191,9 @@ void HelloTimer::handle(Event *)
  Scheduler::instance().schedule(this, &intr, interval);
 }
 
-void Modif::handle(Event *)
+void Modif::handle(Event *)                   // modifikasi perhitungan jumlah node tetangga
 {
-  double now = Scheduler::instance().clock(); // modifikasi
+  double now = Scheduler::instance().clock(); 
   FILE *fp;
   double interval = 5.0;
   
@@ -202,7 +202,7 @@ void Modif::handle(Event *)
 
   if(now > 0.000000 && masuk[run]==0)
   {
-    masuk[run]=100;     // melakukan sorting
+    masuk[run]=100;                               // melakukan pengurutan tetangga terbanyak
     
     for(int i=0;i<nodes_count;i++)
     {
@@ -212,13 +212,13 @@ void Modif::handle(Event *)
         {
          int tmp;
          tmp=count_neighbour[i];
-         count_neighbour[i]=count_neighbour[j];     // melakukan pengurutan node
+         count_neighbour[i]=count_neighbour[j];     // melakukan pengurutan node dengan tetangga terbanyak
          count_neighbour[j]=tmp;
         }
       }
     }
 
-    //menghitung berapa kali muncul tiap angka
+                                                    // menghitung berapa kali muncul tiap angka
     for(int i=0;i<nodes_count;i++)
     {
      count_mode[i]=0;
@@ -231,8 +231,8 @@ void Modif::handle(Event *)
       }
     }
 
-    //menentukan nilai yang paling sering muncul
-    for(int i=0;i<nodes_count;i++)
+    
+    for(int i=0;i<nodes_count;i++)                      // menentukan nilai yang paling sering muncul
     {
       if(count_mode[i]>th)
       {
@@ -241,7 +241,7 @@ void Modif::handle(Event *)
     }
 
     
-    old_th = th;
+    old_th = th;                        // threshold digunakan sebagai acuan pencarian cluster head
     // if(old_th != th)
     // {
       fp = fopen("debug.txt", "a");
@@ -877,9 +877,9 @@ void AODV::recvAODV(Packet *p)
   }
 }
 
-void AODV::calculateCHID() // modifikasi menentukan suatu node ialah CH_ID
+void AODV::calculateCHID()   // modifikasi perhitungan threshold pencarian kandidat cluster head
 {
-  int max_degree = -1;
+  int max_degree = -1;                    // modifikasi untuk menentukan berapa minimal tetangga agar suatu node dikatakan cluster head
 
   for (int i = 0; i < sizeof(count_neighbour) / sizeof(*count_neighbour); i++) {
     if (count_neighbour[i] > max_degree)
@@ -911,7 +911,7 @@ void AODV::recvRequest(Packet *p)
   struct hdr_aodv_request *rq = HDR_AODV_REQUEST(p);
   aodv_rt_entry *rt;
 
-   //modifikasi
+   // modifikasi energi
   iNode=    (MobileNode *) (Node::get_node_by_address (index) ); 
   xpos=     iNode->X(); 
   ypos=     iNode->Y(); 
@@ -937,27 +937,27 @@ void AODV::recvRequest(Packet *p)
 
   fp = fopen("debug.txt", "a");
 
-  calculateCHID();  // modifikasi jika node lain bukan cluster head, maka menjadi gateway 
+  calculateCHID();  // modifikasi menjalankan fungsi jika node lain bukan cluster head, maka menjadi gateway 
 
   if (CH_ID != -1) {
-    // cluster head
+    // inisiasi cluster head
     fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node cluster head", now, index, index);
   }
   else if (CH_ID == -1) {
     if (rq->rq_cluster_head_index != -1) {
-      // gateway
+      // modifikasi gateway cooperative
       CH_ID = rq->rq_cluster_head_index;
       fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node gateway cooperative", now, index, index);
     }
     else {
-      // common member
+      // modifikasi gatewat alternatif
       fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node gateway  alternative", now, index, index);
     }
   }
 
   fclose(fp);
 
-  // modifikasi aodv melakukan perhitungan tetangga
+  // modifikasi menampilkan list tetangga tiap node
   Node* m_node = Node::get_node_by_address(this->addr());
   neighbor_list_node* my_mobile_neighbor_list;
   my_mobile_neighbor_list = m_node->neighbor_list_;
@@ -1597,18 +1597,18 @@ void AODV::sendRequest(nsaddr_t dst)
   rq->rq_src_seqno = seqno;
   rq->rq_timestamp = CURRENT_TIME;
 
-  int cluster_head = CH_ID; // modifikasi fungsi init cluster head
+  int cluster_head = CH_ID; // modifikasi kandidat cluster head menjadi cluster head dan pemberian ID pada untuk broadcast
 
-  if (CH_ID == -1) // Jika CH_ID belum ditemukan diawal, lakukan perhitungan
+  if (CH_ID == -1) // Init cluster head belum ditemukan diawal, lakukan perhitungan
     
     calculateCHID();
 
   rq->rq_cluster_head_index = CH_ID;
   CH_ID = cluster_head;
 
-  if (CH_ID != index) // modifikasi jika node ini bukan CH dan CH sudah ditemukan, lakukan broadcast ke node lain
+  if (CH_ID != index) // modifikasi jika suatu node bukan CH, lakukan perhitungan.
     
-    rq->rq_bcast_id = CH_ID;
+    rq->rq_bcast_id = CH_ID;  // modfikasi CH sudah ditemukan, lakukan broadcast ke node lain bahwa node tsb CH
 
   fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::sendRequest sedang berada di node: %d, rq_cluster_head_index: %d, CH_ID: %d", now, index, rq->rq_cluster_head_index, CH_ID);
@@ -1694,7 +1694,7 @@ void AODV::sendError(Packet *p, bool jitter)
   ch->error() = 0;
   ch->addr_type() = NS_AF_NONE;
   ch->next_hop_ = 0;
-  ch->prev_hop_ = index;           // AODV hack
+  ch->prev_hop_ = index;           // 
   ch->direction() = hdr_cmn::DOWN; //important: change the packet's direction
 
   ih->saddr() = index;
@@ -1752,7 +1752,7 @@ void AODV::sendHello()
   ih->daddr() = IP_BROADCAST;
   ih->sport() = RT_PORT;
   ih->dport() = RT_PORT;
-  ih->ttl_ = 1;
+  ih->ttl_ = 1;             // modifikasi memberi pesan ke next node gateway
 
   Scheduler::instance().schedule(target_, p, 0.0);
 }
@@ -1770,7 +1770,7 @@ void AODV::recvHello(Packet *p)
   struct hdr_aodv_reply *rp = HDR_AODV_REPLY(p);
   AODV_Neighbor *nb;
 
-  // modifikasi melakukan perhitungan tetangga
+  // modifikasi menerima pesan dari node pengirim pesan dan node penerima pesan tentang isi tetangga suatu node
   Node *sender_node = Node::get_node_by_address(rp->rp_dst);
   Node *receiver_node = Node::get_node_by_address(index);
 
@@ -1817,7 +1817,7 @@ void AODV::recvHello(Packet *p)
 
 void AODV::nb_insert(nsaddr_t id)
 {
-  count_neighbour[index]+=1;
+  count_neighbour[index]+=1;            // modifikasi penambahan node dan perhitungan tetangga
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
   FILE *fp;
@@ -1831,7 +1831,7 @@ void AODV::nb_insert(nsaddr_t id)
   nb->nb_expire = CURRENT_TIME +
                   (1.5 * ALLOWED_HELLO_LOSS * HELLO_INTERVAL);
   LIST_INSERT_HEAD(&nbhead, nb, nb_link);
-  seqno += 2; // set of neighbors changed
+  seqno += 2; // set dari tetangga yang berubah
   assert((seqno % 2) == 0);
 }
 
@@ -1861,7 +1861,7 @@ AODV::nb_lookup(nsaddr_t id)
  */
 void AODV::nb_delete(nsaddr_t id)
 {
-  count_neighbour[index]-=1;
+  count_neighbour[index]-=1;        
 
   //print fungsi
   double now = Scheduler::instance().clock(); // get the time
