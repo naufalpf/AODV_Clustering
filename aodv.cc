@@ -951,7 +951,7 @@ void AODV::recvRequest(Packet *p)
     }
     else {
       // modifikasi gatewat alternatif
-      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node gateway  alternative", now, index, index);
+      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node gateway alternative", now, index, index);
     }
   }
 
