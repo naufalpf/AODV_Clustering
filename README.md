@@ -8,17 +8,10 @@
 ---
 ## Outline
   - [1. Konsep](#1-konsep)
-   <!--  - [1.1 Deskripsi Paper](#11-deskripsi-paper)
-    - [1.2 Latar Belakang](#12-latar-belakang)
-    - [1.3 Tujuan Clustering AODV](#13-tujuan-clustering-aodv)
-    - [1.4 Solusi Modifikasi](#14-solusi-modifikasi-aodv) -->
   - [2. Implementasi](#2-implementasi-modifikasi)
-   <!--  - [2.1 Penjelasan Modifikasi](#21-penjelasan-singkat-modifikasi-aodv)
-    - [2.2 Cara Kerja](#22-cara-kerja-clustering-aodv)
-    - [2.3 Modifikasi](#23-modifikasi) -->
   - [3. Testing](#3-testing)
   - [4. Referensi](#4-referensi)
-
+   <!--  - [1.1 Deskripsi Paper](#11-deskripsi-paper) - [1.2 Latar Belakang](#12-latar-belakang)- [1.3 Tujuan Clustering AODV](#13-tujuan-clustering-aodv)- [1.4 Solusi Modifikasi](#14-solusi-modifikasi-aodv) --><!--  - [2.1 Penjelasan Modifikasi](#21-penjelasan-singkat-modifikasi-aodv)- [2.2 Cara Kerja](#22-cara-kerja-clustering-aodv)- [2.3 Modifikasi](#23-modifikasi) -->
 ## 1. Konsep
 #### 1.1 Deskripsi Paper
 
