@@ -8,14 +8,14 @@
 ---
 ## Outline
   - [1. Konsep](#1-konsep)
-    - [1.1 Deskripsi Paper](#11-deskripsi-paper)
+   <!--  - [1.1 Deskripsi Paper](#11-deskripsi-paper)
     - [1.2 Latar Belakang](#12-latar-belakang)
     - [1.3 Tujuan Clustering AODV](#13-tujuan-clustering-aodv)
-    - [1.4 Solusi Modifikasi](#14-solusi-modifikasi-aodv)
+    - [1.4 Solusi Modifikasi](#14-solusi-modifikasi-aodv) -->
   - [2. Implementasi](#2-implementasi-modifikasi)
-    - [2.1 Penjelasan Modifikasi](#21-penjelasan-singkat-modifikasi-aodv)
+   <!--  - [2.1 Penjelasan Modifikasi](#21-penjelasan-singkat-modifikasi-aodv)
     - [2.2 Cara Kerja](#22-cara-kerja-clustering-aodv)
-    - [2.3 Modifikasi](#23-modifikasi)
+    - [2.3 Modifikasi](#23-modifikasi) -->
   - [3. Testing](#3-testing)
   - [4. Referensi](#4-referensi)
 
@@ -64,10 +64,7 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
   **2. Fase memilih Gateway**
     * Dua kategori gateway digunakan. kategori gateway yang pertama adalah gateway umum yang mendukung dua cluster head untuk berkomunikasi satu sama lain. 
     * Kategori gateway yang kedua adalah cooperative gateway yang harus bekerja sama untuk menjamin komunikasi antara dua cluster heads. Sebuah node bisa memilih salah satu dari dua kategori gateway untuk mendukung cluster heads yang berbeda.
-  * Berikut adalah proses dari Fase memilih gateway. 
-  ![Flowchart](/img/flow2.jpg)
   
-
   **3. Fase Pemilihan Rute**
     * Ketika sebuah node akan mengirim data ke node tujuan, node tersebut memeriksa apakah node tetangganya mengandung node tujuan. 
     * Jika iya, data akan dikirim ke node tetangga secara langsung. Jika tidak, node tersebut akan mencari tabel routingnya untuk mencari rute efektif ke node tujuan. 
