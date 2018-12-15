@@ -79,9 +79,7 @@ Paper berjudul **An Optimized AODV Protocol Based on Clustering in WSNs** ini me
     - _neighbor_list_node_ untuk menyimpan berapa jumlah tetangga dalam tiap node
     - _CH_ID_ digunakan untuk menyimpan ID CH jika suatu node telah ditetapkan sebagai *Cluster Head* dari perhitungan setelah hello messages
 
-2. Menambahkan field _rq_cluster_head_index_ pada fungsi **struct hdr_aodv_request** di file **aodv_packet.h** 
-
-3. Menambahkan header _CH_ID_ untuk melakukan penyimpanan node _cluster head_ dan fungsi _Modif_ serta_calculateCHID()_ untuk menginisiasi fungsi perhitungan pada file **aodv.h**
+2. Menambahkan field _rq_cluster_head_index_ pada fungsi **struct hdr_aodv_request** di file **aodv_packet.h** dan menambahkan header _CH_ID_ untuk melakukan penyimpanan node _cluster head_ dan fungsi _Modif_ serta_calculateCHID()_ untuk menginisiasi fungsi perhitungan pada file **aodv.h**
 
 3. Melakukan inisialisasi paket yang dikirim pada fungsi **AODV::nb_insert** dan **AODV::nb_delete** yang ada di **aodv.cc**
     - **count_neighbour[index]** diberi nilai 0 yang nantinya akan mengalami perubahan setelah mengetahui jumlah tetangga
