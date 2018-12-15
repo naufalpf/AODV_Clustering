@@ -180,7 +180,7 @@ class AODV: public Agent {
         friend class aodv_rt_entry;
         friend class BroadcastTimer;
         friend class HelloTimer;
-        friend class Modif;
+        friend class Modif;         // Modifikasi menambah fungsi baru untuk menghitung jumlah node tetangga
         friend class NeighborTimer;
         friend class RouteCacheTimer;
         friend class LocalRepairTimer;
@@ -221,7 +221,7 @@ class AODV: public Agent {
         void            nb_purge(void);
         // int             nb_node();
 
-        int CH_ID;  // modifikasi add header menyimpan CH
+        int CH_ID;                // Modifikasi add field header untuk menyimpan ID Cluster Head
 
         /*
          * Broadcast ID Management
@@ -251,7 +251,7 @@ class AODV: public Agent {
         void            recvRequest(Packet *p);
         void            recvReply(Packet *p);
         void            recvError(Packet *p);
-        void            calculateCHID(); // modifikasi 
+        void            calculateCHID();          // Modifikasi pembuatan fungsi untuk menghitung jumlah tetangga terbanyak
 
   /*
    * History management
@@ -307,9 +307,9 @@ class AODV: public Agent {
         void            log_link_broke(Packet *p);
         void            log_link_kept(nsaddr_t dst);
 
-        int cluster_id;
+        int cluster_id;             // Modifikasi penambahan field untuk mencetak bahwa suatu node ialah Cluster Head
         public: 
-          double      xpos; 
+          double      xpos;         // Modifikasi perubahan energi
           double      ypos; 
           double      zpos; 
           double      iEnergy; 
