@@ -51,11 +51,11 @@ struct hdr_aodv_request {     // modifikasi add cluster head
   u_int32_t       rq_dst_seqno;   // Destination Sequence Number
   nsaddr_t        rq_src;         // Source IP Address
   u_int32_t       rq_src_seqno;   // Source Sequence Number
-   double          rq_min_life;    // modif for check min life for each node
+   double          rq_min_life;    // Modif untuk mengecek min life pada tiap node
 
   double          rq_timestamp;   // when REQUEST sent;
 
-  int rq_cluster_head_index;
+  int rq_cluster_head_index;      // Modifikasi untuk mengecek dan menyimpan node tersebut cluster head atau bukan
           // used to compute route discovery latency
 
   
