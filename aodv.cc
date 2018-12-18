@@ -911,7 +911,7 @@ void AODV::recvRequest(Packet *p)
   struct hdr_aodv_request *rq = HDR_AODV_REQUEST(p);
   aodv_rt_entry *rt;
 
-   // modifikasi energi
+   // energi
   iNode=    (MobileNode *) (Node::get_node_by_address (index) ); 
   xpos=     iNode->X(); 
   ypos=     iNode->Y(); 
@@ -977,8 +977,6 @@ void AODV::recvRequest(Packet *p)
           break;
       }
   }
-  //cout<<"Jumlah: "<<count<<endl;
-  //cout<<"**Jumlah: "<<nb_node()<<endl;
 
    /*
    * Drop if:
@@ -1752,7 +1750,7 @@ void AODV::sendHello()
   ih->daddr() = IP_BROADCAST;
   ih->sport() = RT_PORT;
   ih->dport() = RT_PORT;
-  ih->ttl_ = 1;             // modifikasi memberi pesan ke next node gateway
+  ih->ttl_ = 1;             // memberi pesan ke next node gateway
 
   Scheduler::instance().schedule(target_, p, 0.0);
 }
