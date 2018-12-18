@@ -1167,7 +1167,7 @@
 2.558308  fungsi Energi : saat ini di node 1 dengan energy: 0.8706, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8998
 2.558308  lifetime node 1 dari 0.8998 menjadi energi baru sebesar 0.8706
  2.558308 fungsi AODV::calculateCHID di node 1 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.558308 fungsi AODV::recvRequest sedang berada di node: 1, node 1 adalah node gateway alternative
+ 2.558308 fungsi AODV::recvRequest sedang berada di node: 1, node 1 adalah node cluster head
  2.558308 fungsi AODV::id_lookup
  2.558308 fungsi AODV::id_insert
  2.558308 fungsi AODV::rt_update
@@ -1180,7 +1180,7 @@
 2.562067  fungsi Energi : saat ini di node 2 dengan energy: 0.8701, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8706
 2.562067  lifetime node 2 dari 0.8706 menjadi energi baru sebesar 0.8701
  2.562067 fungsi AODV::calculateCHID di node 2 degreenya: 4, max_degree: 6, CH_ID: -1
- 2.562067 fungsi AODV::recvRequest sedang berada di node: 2, node 2 adalah node gateway alternative
+ 2.562067 fungsi AODV::recvRequest sedang berada di node: 2, node 2 adalah node cluster head
  2.562067 fungsi AODV::id_lookup
  2.562067 fungsi AODV::id_insert
  2.562067 fungsi AODV::rt_update
@@ -1193,7 +1193,7 @@
 2.562067  fungsi Energi : saat ini di node 10 dengan energy: 0.8704, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8706
 2.562067  lifetime node 10 dari 0.8706 menjadi energi baru sebesar 0.8704
  2.562067 fungsi AODV::calculateCHID di node 10 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.562067 fungsi AODV::recvRequest sedang berada di node: 10, node 10 adalah node gateway alternative
+ 2.562067 fungsi AODV::recvRequest sedang berada di node: 10, node 10 adalah node cluster head
  2.562067 fungsi AODV::id_lookup
  2.562067 fungsi AODV::id_insert
  2.562067 fungsi AODV::rt_update
@@ -1205,14 +1205,14 @@
  2.562067 fungsi AODV::recvRequest sedang berada di node: 0 jumlah tetangga 1 
 2.562067  fungsi Energi : saat ini di node 0 dengan energy: 0.8709, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8706
  2.562067 fungsi AODV::calculateCHID di node 0 degreenya: 1, max_degree: 6, CH_ID: -1
- 2.562067 fungsi AODV::recvRequest sedang berada di node: 0, node 0 adalah node gateway alternative
+ 2.562067 fungsi AODV::recvRequest sedang berada di node: 0, node 0 adalah node cluster head
  2.567995 fungsi AODV::recv 
  2.567995 fungsi AODV::recvAODV
  2.567995 fungsi AODV::recvRequest sedang berada di node: 1 jumlah tetangga 3 
 2.567995  fungsi Energi : saat ini di node 1 dengan energy: 0.8698, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8701
 2.567995  lifetime node 1 dari 0.8701 menjadi energi baru sebesar 0.8698
  2.567995 fungsi AODV::calculateCHID di node 1 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.567995 fungsi AODV::recvRequest sedang berada di node: 1, node 1 adalah node gateway alternative
+ 2.567995 fungsi AODV::recvRequest sedang berada di node: 1, node 1 adalah node cluster head
  2.567995 fungsi AODV::id_lookup
  2.567995 fungsi AODV::recv 
  2.567995 fungsi AODV::recvAODV
@@ -1220,7 +1220,7 @@
 2.567995  fungsi Energi : saat ini di node 3 dengan energy: 0.8700, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8701
 2.567995  lifetime node 3 dari 0.8701 menjadi energi baru sebesar 0.8700
  2.567995 fungsi AODV::calculateCHID di node 3 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.567995 fungsi AODV::recvRequest sedang berada di node: 3, node 3 adalah node gateway alternative
+ 2.567995 fungsi AODV::recvRequest sedang berada di node: 3, node 3 adalah node cluster head
  2.567995 fungsi AODV::id_lookup
  2.567995 fungsi AODV::id_insert
  2.567995 fungsi AODV::rt_update
@@ -1233,7 +1233,7 @@
 2.567995  fungsi Energi : saat ini di node 11 dengan energy: 0.8700, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8701
 2.567995  lifetime node 11 dari 0.8701 menjadi energi baru sebesar 0.8700
  2.567995 fungsi AODV::calculateCHID di node 11 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.567995 fungsi AODV::recvRequest sedang berada di node: 11, node 11 adalah node gateway alternative
+ 2.567995 fungsi AODV::recvRequest sedang berada di node: 11, node 11 adalah node cluster head
  2.567995 fungsi AODV::id_lookup
  2.567995 fungsi AODV::id_insert
  2.567995 fungsi AODV::rt_update
@@ -1246,7 +1246,7 @@
 2.567995  fungsi Energi : saat ini di node 10 dengan energy: 0.8700, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8701
 2.567995  lifetime node 10 dari 0.8701 menjadi energi baru sebesar 0.8700
  2.567995 fungsi AODV::calculateCHID di node 10 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.567995 fungsi AODV::recvRequest sedang berada di node: 10, node 10 adalah node gateway alternative
+ 2.567995 fungsi AODV::recvRequest sedang berada di node: 10, node 10 adalah node cluster head
  2.567995 fungsi AODV::id_lookup
  2.570581 fungsi AODV::recv 
  2.570581 fungsi AODV::recvAODV
@@ -1254,7 +1254,7 @@
 2.570581  fungsi Energi : saat ini di node 11 dengan energy: 0.8697, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8700
 2.570581  lifetime node 11 dari 0.8700 menjadi energi baru sebesar 0.8697
  2.570581 fungsi AODV::calculateCHID di node 11 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.570581 fungsi AODV::recvRequest sedang berada di node: 11, node 11 adalah node gateway alternative
+ 2.570581 fungsi AODV::recvRequest sedang berada di node: 11, node 11 adalah node cluster head
  2.570581 fungsi AODV::id_lookup
  2.570582 fungsi AODV::recv 
  2.570582 fungsi AODV::recvAODV
@@ -1262,7 +1262,7 @@
 2.570582  fungsi Energi : saat ini di node 2 dengan energy: 0.8694, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8700
 2.570582  lifetime node 2 dari 0.8700 menjadi energi baru sebesar 0.8694
  2.570582 fungsi AODV::calculateCHID di node 2 degreenya: 4, max_degree: 6, CH_ID: -1
- 2.570582 fungsi AODV::recvRequest sedang berada di node: 2, node 2 adalah node gateway alternative
+ 2.570582 fungsi AODV::recvRequest sedang berada di node: 2, node 2 adalah node cluster head
  2.570582 fungsi AODV::id_lookup
  2.570582 fungsi AODV::recv 
  2.570582 fungsi AODV::recvAODV
@@ -1270,7 +1270,7 @@
 2.570582  fungsi Energi : saat ini di node 4 dengan energy: 0.8689, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8700
 2.570582  lifetime node 4 dari 0.8700 menjadi energi baru sebesar 0.8689
  2.570582 fungsi AODV::calculateCHID di node 4 degreenya: 6, max_degree: 6, CH_ID: 4
- 2.570582 fungsi AODV::recvRequest sedang berada di node: 4, node 4 adalah node cluster head
+ 2.570582 fungsi AODV::recvRequest sedang berada di node: 4, node 4 adalah node common gateway
  2.570582 fungsi AODV::id_lookup
  2.570582 fungsi AODV::id_insert
  2.570582 fungsi AODV::rt_update
@@ -1283,7 +1283,7 @@
 2.572530  fungsi Energi : saat ini di node 8 dengan energy: 0.8702, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8704
 2.572530  lifetime node 8 dari 0.8704 menjadi energi baru sebesar 0.8702
  2.572530 fungsi AODV::calculateCHID di node 8 degreenya: 2, max_degree: 6, CH_ID: -1
- 2.572530 fungsi AODV::recvRequest sedang berada di node: 8, node 8 adalah node gateway alternative
+ 2.572530 fungsi AODV::recvRequest sedang berada di node: 8, node 8 adalah node cluster head
  2.572530 fungsi AODV::id_lookup
  2.572530 fungsi AODV::id_insert
  2.572530 fungsi AODV::rt_update
@@ -1296,7 +1296,7 @@
 2.572530  fungsi Energi : saat ini di node 1 dengan energy: 0.8695, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8704
 2.572530  lifetime node 1 dari 0.8704 menjadi energi baru sebesar 0.8695
  2.572530 fungsi AODV::calculateCHID di node 1 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.572530 fungsi AODV::recvRequest sedang berada di node: 1, node 1 adalah node gateway alternative
+ 2.572530 fungsi AODV::recvRequest sedang berada di node: 1, node 1 adalah node cluster head
  2.572530 fungsi AODV::id_lookup
  2.572530 fungsi AODV::recv 
  2.572530 fungsi AODV::recvAODV
@@ -1304,7 +1304,7 @@
 2.572530  fungsi Energi : saat ini di node 2 dengan energy: 0.8692, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8704
 2.572530  lifetime node 2 dari 0.8704 menjadi energi baru sebesar 0.8692
  2.572530 fungsi AODV::calculateCHID di node 2 degreenya: 4, max_degree: 6, CH_ID: -1
- 2.572530 fungsi AODV::recvRequest sedang berada di node: 2, node 2 adalah node gateway alternative
+ 2.572530 fungsi AODV::recvRequest sedang berada di node: 2, node 2 adalah node cluster head
  2.572530 fungsi AODV::id_lookup
  2.572795 fungsi AODV::recv 
  2.572795 fungsi AODV::recvAODV
@@ -1312,7 +1312,7 @@
 2.572795  fungsi Energi : saat ini di node 6 dengan energy: 0.8687, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8689
 2.572795  lifetime node 6 dari 0.8689 menjadi energi baru sebesar 0.8687
  2.572795 fungsi AODV::calculateCHID di node 6 degreenya: 6, max_degree: 6, CH_ID: 6
- 2.572795 fungsi AODV::recvRequest sedang berada di node: 6, node 6 adalah node cluster head
+ 2.572795 fungsi AODV::recvRequest sedang berada di node: 6, node 6 adalah node common gateway
  2.572795 fungsi AODV::id_lookup
  2.572795 fungsi AODV::id_insert
  2.572795 fungsi AODV::rt_update
@@ -1324,14 +1324,14 @@
  2.572795 fungsi AODV::recvRequest sedang berada di node: 3 jumlah tetangga 3 
 2.572795  fungsi Energi : saat ini di node 3 dengan energy: 0.8695, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8689
  2.572795 fungsi AODV::calculateCHID di node 3 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.572795 fungsi AODV::recvRequest sedang berada di node: 3, node 3 adalah node gateway alternative
+ 2.572795 fungsi AODV::recvRequest sedang berada di node: 3, node 3 adalah node cluster head
  2.572795 fungsi AODV::id_lookup
  2.572795 fungsi AODV::recv 
  2.572795 fungsi AODV::recvAODV
  2.572795 fungsi AODV::recvRequest sedang berada di node: 12 jumlah tetangga 5 
 2.572795  fungsi Energi : saat ini di node 12 dengan energy: 0.8690, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8689
  2.572795 fungsi AODV::calculateCHID di node 12 degreenya: 5, max_degree: 6, CH_ID: -1
- 2.572795 fungsi AODV::recvRequest sedang berada di node: 12, node 12 adalah node gateway alternative
+ 2.572795 fungsi AODV::recvRequest sedang berada di node: 12, node 12 adalah node cluster head
  2.572795 fungsi AODV::id_lookup
  2.572795 fungsi AODV::id_insert
  2.572795 fungsi AODV::rt_update
@@ -1343,7 +1343,7 @@
  2.572796 fungsi AODV::recvRequest sedang berada di node: 11 jumlah tetangga 3 
 2.572796  fungsi Energi : saat ini di node 11 dengan energy: 0.8695, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8689
  2.572796 fungsi AODV::calculateCHID di node 11 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.572796 fungsi AODV::recvRequest sedang berada di node: 11, node 11 adalah node gateway alternative
+ 2.572796 fungsi AODV::recvRequest sedang berada di node: 11, node 11 adalah node cluster head
  2.572796 fungsi AODV::id_lookup
  2.572796 fungsi AODV::recv 
  2.572796 fungsi AODV::recvAODV
@@ -1351,7 +1351,7 @@
 2.572796  fungsi Energi : saat ini di node 5 dengan energy: 0.8687, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8689
 2.572796  lifetime node 5 dari 0.8689 menjadi energi baru sebesar 0.8687
  2.572796 fungsi AODV::calculateCHID di node 5 degreenya: 6, max_degree: 6, CH_ID: 5
- 2.572796 fungsi AODV::recvRequest sedang berada di node: 5, node 5 adalah node cluster head
+ 2.572796 fungsi AODV::recvRequest sedang berada di node: 5, node 5 adalah node common gateway
  2.572796 fungsi AODV::id_lookup
  2.572796 fungsi AODV::id_insert
  2.572796 fungsi AODV::rt_update
@@ -1363,7 +1363,7 @@
  2.572796 fungsi AODV::recvRequest sedang berada di node: 7 jumlah tetangga 5 
 2.572796  fungsi Energi : saat ini di node 7 dengan energy: 0.8690, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8689
  2.572796 fungsi AODV::calculateCHID di node 7 degreenya: 5, max_degree: 6, CH_ID: -1
- 2.572796 fungsi AODV::recvRequest sedang berada di node: 7, node 7 adalah node gateway alternative
+ 2.572796 fungsi AODV::recvRequest sedang berada di node: 7, node 7 adalah node cluster head
  2.572796 fungsi AODV::id_lookup
  2.572796 fungsi AODV::id_insert
  2.572796 fungsi AODV::rt_update
@@ -1375,7 +1375,7 @@
  2.575883 fungsi AODV::recvRequest sedang berada di node: 12 jumlah tetangga 5 
 2.575883  fungsi Energi : saat ini di node 12 dengan energy: 0.8687, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
  2.575883 fungsi AODV::calculateCHID di node 12 degreenya: 5, max_degree: 6, CH_ID: -1
- 2.575883 fungsi AODV::recvRequest sedang berada di node: 12, node 12 adalah node gateway alternative
+ 2.575883 fungsi AODV::recvRequest sedang berada di node: 12, node 12 adalah node cluster head
  2.575883 fungsi AODV::id_lookup
  2.575883 fungsi AODV::recv 
  2.575883 fungsi AODV::recvAODV
@@ -1383,14 +1383,14 @@
 2.575883  fungsi Energi : saat ini di node 6 dengan energy: 0.8684, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
 2.575883  lifetime node 6 dari 0.8687 menjadi energi baru sebesar 0.8684
  2.575883 fungsi AODV::calculateCHID di node 6 degreenya: 6, max_degree: 6, CH_ID: 6
- 2.575883 fungsi AODV::recvRequest sedang berada di node: 6, node 6 adalah node cluster head
+ 2.575883 fungsi AODV::recvRequest sedang berada di node: 6, node 6 adalah node common gateway
  2.575883 fungsi AODV::id_lookup
  2.575883 fungsi AODV::recv 
  2.575883 fungsi AODV::recvAODV
  2.575883 fungsi AODV::recvRequest sedang berada di node: 13 jumlah tetangga 5 
 2.575883  fungsi Energi : saat ini di node 13 dengan energy: 0.8688, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
  2.575883 fungsi AODV::calculateCHID di node 13 degreenya: 5, max_degree: 6, CH_ID: -1
- 2.575883 fungsi AODV::recvRequest sedang berada di node: 13, node 13 adalah node gateway alternative
+ 2.575883 fungsi AODV::recvRequest sedang berada di node: 13, node 13 adalah node cluster head
  2.575883 fungsi AODV::id_lookup
  2.575883 fungsi AODV::id_insert
  2.575883 fungsi AODV::rt_update
@@ -1402,7 +1402,7 @@
  2.575883 fungsi AODV::recvRequest sedang berada di node: 14 jumlah tetangga 4 
 2.575883  fungsi Energi : saat ini di node 14 dengan energy: 0.8691, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
  2.575883 fungsi AODV::calculateCHID di node 14 degreenya: 4, max_degree: 6, CH_ID: -1
- 2.575883 fungsi AODV::recvRequest sedang berada di node: 14, node 14 adalah node gateway alternative
+ 2.575883 fungsi AODV::recvRequest sedang berada di node: 14, node 14 adalah node cluster head
  2.575883 fungsi AODV::id_lookup
  2.575883 fungsi AODV::id_insert
  2.575883 fungsi AODV::rt_update
@@ -1412,7 +1412,7 @@
  2.575883 fungsi AODV::recvRequest sedang berada di node: 7 jumlah tetangga 5 
 2.575883  fungsi Energi : saat ini di node 7 dengan energy: 0.8687, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
  2.575883 fungsi AODV::calculateCHID di node 7 degreenya: 5, max_degree: 6, CH_ID: -1
- 2.575883 fungsi AODV::recvRequest sedang berada di node: 7, node 7 adalah node gateway alternative
+ 2.575883 fungsi AODV::recvRequest sedang berada di node: 7, node 7 adalah node cluster head
  2.575883 fungsi AODV::id_lookup
  2.575883 fungsi AODV::recv 
  2.575883 fungsi AODV::recvAODV
@@ -1420,7 +1420,7 @@
 2.575883  fungsi Energi : saat ini di node 4 dengan energy: 0.8684, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
 2.575883  lifetime node 4 dari 0.8687 menjadi energi baru sebesar 0.8684
  2.575883 fungsi AODV::calculateCHID di node 4 degreenya: 6, max_degree: 6, CH_ID: 4
- 2.575883 fungsi AODV::recvRequest sedang berada di node: 4, node 4 adalah node cluster head
+ 2.575883 fungsi AODV::recvRequest sedang berada di node: 4, node 4 adalah node common gateway
  2.575883 fungsi AODV::id_lookup
  2.578874 fungsi AODV::recv 
  2.578874 fungsi AODV::recvAODV
@@ -1428,7 +1428,7 @@
 2.578874  fungsi Energi : saat ini di node 3 dengan energy: 0.8691, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8700
 2.578874  lifetime node 3 dari 0.8700 menjadi energi baru sebesar 0.8691
  2.578874 fungsi AODV::calculateCHID di node 3 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.578874 fungsi AODV::recvRequest sedang berada di node: 3, node 3 adalah node gateway alternative
+ 2.578874 fungsi AODV::recvRequest sedang berada di node: 3, node 3 adalah node cluster head
  2.578874 fungsi AODV::id_lookup
  2.578874 fungsi AODV::recv 
  2.578874 fungsi AODV::recvAODV
@@ -1436,7 +1436,7 @@
 2.578874  fungsi Energi : saat ini di node 2 dengan energy: 0.8687, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8700
 2.578874  lifetime node 2 dari 0.8700 menjadi energi baru sebesar 0.8687
  2.578874 fungsi AODV::calculateCHID di node 2 degreenya: 4, max_degree: 6, CH_ID: -1
- 2.578874 fungsi AODV::recvRequest sedang berada di node: 2, node 2 adalah node gateway alternative
+ 2.578874 fungsi AODV::recvRequest sedang berada di node: 2, node 2 adalah node cluster head
  2.578874 fungsi AODV::id_lookup
  2.579862 fungsi AODV::recv 
  2.579862 fungsi AODV::recvAODV
@@ -1444,7 +1444,7 @@
 2.579862  fungsi Energi : saat ini di node 5 dengan energy: 0.8678, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
 2.579862  lifetime node 5 dari 0.8687 menjadi energi baru sebesar 0.8678
  2.579862 fungsi AODV::calculateCHID di node 5 degreenya: 6, max_degree: 6, CH_ID: 5
- 2.579862 fungsi AODV::recvRequest sedang berada di node: 5, node 5 adalah node cluster head
+ 2.579862 fungsi AODV::recvRequest sedang berada di node: 5, node 5 adalah node common gateway
  2.579862 fungsi AODV::id_lookup
  2.579862 fungsi AODV::recv 
  2.579862 fungsi AODV::recvAODV
@@ -1452,7 +1452,7 @@
 2.579862  fungsi Energi : saat ini di node 4 dengan energy: 0.8678, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
 2.579862  lifetime node 4 dari 0.8687 menjadi energi baru sebesar 0.8678
  2.579862 fungsi AODV::calculateCHID di node 4 degreenya: 6, max_degree: 6, CH_ID: 4
- 2.579862 fungsi AODV::recvRequest sedang berada di node: 4, node 4 adalah node cluster head
+ 2.579862 fungsi AODV::recvRequest sedang berada di node: 4, node 4 adalah node common gateway
  2.579862 fungsi AODV::id_lookup
  2.579862 fungsi AODV::recv 
  2.579862 fungsi AODV::recvAODV
@@ -1460,7 +1460,7 @@
 2.579862  fungsi Energi : saat ini di node 12 dengan energy: 0.8681, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
 2.579862  lifetime node 12 dari 0.8687 menjadi energi baru sebesar 0.8681
  2.579862 fungsi AODV::calculateCHID di node 12 degreenya: 5, max_degree: 6, CH_ID: -1
- 2.579862 fungsi AODV::recvRequest sedang berada di node: 12, node 12 adalah node gateway alternative
+ 2.579862 fungsi AODV::recvRequest sedang berada di node: 12, node 12 adalah node cluster head
  2.579862 fungsi AODV::id_lookup
  2.579862 fungsi AODV::recv 
  2.579862 fungsi AODV::recvAODV
@@ -1468,7 +1468,7 @@
 2.579862  fungsi Energi : saat ini di node 7 dengan energy: 0.8683, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
 2.579862  lifetime node 7 dari 0.8687 menjadi energi baru sebesar 0.8683
  2.579862 fungsi AODV::calculateCHID di node 7 degreenya: 5, max_degree: 6, CH_ID: -1
- 2.579862 fungsi AODV::recvRequest sedang berada di node: 7, node 7 adalah node gateway alternative
+ 2.579862 fungsi AODV::recvRequest sedang berada di node: 7, node 7 adalah node cluster head
  2.579862 fungsi AODV::id_lookup
  2.579862 fungsi AODV::recv 
  2.579862 fungsi AODV::recvAODV
@@ -1476,7 +1476,7 @@
 2.579862  fungsi Energi : saat ini di node 13 dengan energy: 0.8682, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
 2.579862  lifetime node 13 dari 0.8687 menjadi energi baru sebesar 0.8682
  2.579862 fungsi AODV::calculateCHID di node 13 degreenya: 5, max_degree: 6, CH_ID: -1
- 2.579862 fungsi AODV::recvRequest sedang berada di node: 13, node 13 adalah node gateway alternative
+ 2.579862 fungsi AODV::recvRequest sedang berada di node: 13, node 13 adalah node cluster head
  2.579862 fungsi AODV::id_lookup
  2.579863 fungsi AODV::recv 
  2.579863 fungsi AODV::recvAODV
@@ -1484,7 +1484,7 @@
 2.579863  fungsi Energi : saat ini di node 14 dengan energy: 0.8684, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
 2.579863  lifetime node 14 dari 0.8687 menjadi energi baru sebesar 0.8684
  2.579863 fungsi AODV::calculateCHID di node 14 degreenya: 4, max_degree: 6, CH_ID: -1
- 2.579863 fungsi AODV::recvRequest sedang berada di node: 14, node 14 adalah node gateway alternative
+ 2.579863 fungsi AODV::recvRequest sedang berada di node: 14, node 14 adalah node cluster head
  2.579863 fungsi AODV::id_lookup
  2.581336 fungsi AODV::recv 
  2.581336 fungsi AODV::recvAODV
@@ -1492,7 +1492,7 @@
 2.581336  fungsi Energi : saat ini di node 10 dengan energy: 0.8691, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8702
 2.581336  lifetime node 10 dari 0.8702 menjadi energi baru sebesar 0.8691
  2.581336 fungsi AODV::calculateCHID di node 10 degreenya: 3, max_degree: 6, CH_ID: -1
- 2.581336 fungsi AODV::recvRequest sedang berada di node: 10, node 10 adalah node gateway alternative
+ 2.581336 fungsi AODV::recvRequest sedang berada di node: 10, node 10 adalah node cluster head
  2.581336 fungsi AODV::id_lookup
  2.581336 fungsi AODV::recv 
  2.581336 fungsi AODV::recvAODV
@@ -1500,7 +1500,7 @@
 2.581336  fungsi Energi : saat ini di node 9 dengan energy: 0.8697, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8702
 2.581336  lifetime node 9 dari 0.8702 menjadi energi baru sebesar 0.8697
  2.581336 fungsi AODV::calculateCHID di node 9 degreenya: 2, max_degree: 6, CH_ID: -1
- 2.581336 fungsi AODV::recvRequest sedang berada di node: 9, node 9 adalah node gateway alternative
+ 2.581336 fungsi AODV::recvRequest sedang berada di node: 9, node 9 adalah node cluster head
  2.581336 fungsi AODV::id_lookup
  2.581336 fungsi AODV::id_insert
  2.581336 fungsi AODV::rt_update
@@ -1519,7 +1519,7 @@
  2.582861 fungsi AODV::recvRequest sedang berada di node: 9 jumlah tetangga 2 
 2.582861  fungsi Energi : saat ini di node 9 dengan energy: 0.8695, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8689
  2.582861 fungsi AODV::calculateCHID di node 9 degreenya: 2, max_degree: 6, CH_ID: -1
- 2.582861 fungsi AODV::recvRequest sedang berada di node: 9, node 9 adalah node gateway alternative
+ 2.582861 fungsi AODV::recvRequest sedang berada di node: 9, node 9 adalah node cluster head
  2.582861 fungsi AODV::id_lookup
  2.583020 fungsi AODV::recv 
  2.583020 fungsi AODV::recvAODV
@@ -1527,7 +1527,7 @@
 2.583020  fungsi Energi : saat ini di node 14 dengan energy: 0.8679, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8689
 2.583020  lifetime node 14 dari 0.8689 menjadi energi baru sebesar 0.8679
  2.583020 fungsi AODV::calculateCHID di node 14 degreenya: 4, max_degree: 6, CH_ID: -1
- 2.583020 fungsi AODV::recvRequest sedang berada di node: 14, node 14 adalah node gateway alternative
+ 2.583020 fungsi AODV::recvRequest sedang berada di node: 14, node 14 adalah node cluster head
  2.583020 fungsi AODV::id_lookup
  2.584448 fungsi AODV::recv 
  2.584448 fungsi AODV::recvAODV
@@ -1535,7 +1535,7 @@
 2.584448  fungsi Energi : saat ini di node 8 dengan energy: 0.8693, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8697
 2.584448  lifetime node 8 dari 0.8697 menjadi energi baru sebesar 0.8693
  2.584448 fungsi AODV::calculateCHID di node 8 degreenya: 2, max_degree: 6, CH_ID: -1
- 2.584448 fungsi AODV::recvRequest sedang berada di node: 8, node 8 adalah node gateway alternative
+ 2.584448 fungsi AODV::recvRequest sedang berada di node: 8, node 8 adalah node cluster head
  2.584448 fungsi AODV::id_lookup
  2.585261 fungsi AODV::recv 
  2.585261 fungsi AODV::recvAODV
@@ -1543,7 +1543,7 @@
 2.585261  fungsi Energi : saat ini di node 14 dengan energy: 0.8676, paket dari node 0 ke node tujuan: 14 dengan lifetime 0.8687
 2.585261  lifetime node 14 dari 0.8687 menjadi energi baru sebesar 0.8676
  2.585261 fungsi AODV::calculateCHID di node 14 degreenya: 4, max_degree: 6, CH_ID: -1
- 2.585261 fungsi AODV::recvRequest sedang berada di node: 14, node 14 adalah node gateway alternative
+ 2.585261 fungsi AODV::recvRequest sedang berada di node: 14, node 14 adalah node cluster head
  2.585261 fungsi AODV::id_lookup
  2.589344 fungsi AODV::recv 
  2.589344 fungsi AODV::recvAODV

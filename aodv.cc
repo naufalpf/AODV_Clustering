@@ -15,7 +15,7 @@ int count_neighbour[1000];    // menghitung jumlah tetangga tiap node
 int count_mode[1000];        // menghitung modus
 int masuk[1000];
 //count_neighbour = new int[0];
-int nodes_count=0;            // modifikasi jumlah node terhitung
+int nodes_count=0;            //  jumlah node terhitung
 int th = 0;                 // menghitung threshold
 int old_th;
 
@@ -153,7 +153,7 @@ AODV::AODV(nsaddr_t id) : Agent(PT_AODV),
 
   logtarget = 0;
   ifqueue = 0;
-  CH_ID = -1;          // modifikasi inisiasi penyimpanan cluster head
+  CH_ID = -1;          //  inisiasi penyimpanan cluster head
 }
 
 /*
@@ -807,7 +807,7 @@ void AODV::recv(Packet *p, Handler *)
     }
   }
   /*
-  *  Modifikasi Mendapatkan paket yang telah dikirimkan, routing loop
+  *  
   */
   else if (ih->saddr() == index)
   {
@@ -879,7 +879,7 @@ void AODV::recvAODV(Packet *p)
 
 void AODV::calculateCHID()   // modifikasi perhitungan threshold pencarian kandidat cluster head
 {
-  int max_degree = -1;                    // modifikasi untuk menentukan berapa minimal tetangga agar suatu node dikatakan cluster head
+  int max_degree = -1;                    //  menentukan berapa minimal tetangga agar suatu node dikatakan cluster head
 
   for (int i = 0; i < sizeof(count_neighbour) / sizeof(*count_neighbour); i++) {
     if (count_neighbour[i] > max_degree)
@@ -945,13 +945,13 @@ void AODV::recvRequest(Packet *p)
   }
   else if (CH_ID == -1) {
     if (rq->rq_cluster_head_index != -1) {
-      // modifikasi gateway cooperative
+      // 
       CH_ID = rq->rq_cluster_head_index;
-      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node gateway cooperative", now, index, index);
+      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node alternative gateway", now, index, index);
     }
     else {
-      // modifikasi gatewat alternatif
-      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node gateway alternative", now, index, index);
+      // 
+      fprintf(fp, "\n %f fungsi AODV::recvRequest sedang berada di node: %d, node %d adalah node common gateway", now, index, index);
     }
   }
 
@@ -1604,9 +1604,9 @@ void AODV::sendRequest(nsaddr_t dst)
   rq->rq_cluster_head_index = CH_ID;
   CH_ID = cluster_head;
 
-  if (CH_ID != index) // modifikasi jika suatu node bukan CH, lakukan perhitungan.
+  if (CH_ID != index) // modifikasi jika suatu node bukan CH, lakukan perhitungan. Lalu lakukan broadcast ke node lain jika CH
     
-    rq->rq_bcast_id = CH_ID;  // modfikasi CH sudah ditemukan, lakukan broadcast ke node lain bahwa node tsb CH
+    rq->rq_bcast_id = CH_ID;  
 
   fp = fopen("debug.txt", "a");
   fprintf(fp, "\n %f fungsi AODV::sendRequest sedang berada di node: %d, rq_cluster_head_index: %d, CH_ID: %d", now, index, rq->rq_cluster_head_index, CH_ID);
